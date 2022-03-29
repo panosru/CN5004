@@ -25,7 +25,7 @@ public class App
         }
 
         FXMLLoader fxmlLoader = new FXMLLoader(
-            this.getClass().getResource("view/main.fxml"));
+            this.getClass().getResource("view/login.fxml"));
 
         stage.setTitle(Utils.TITLE);
         stage.setScene(new Scene(fxmlLoader.load(), Utils.APP_WIDTH, Utils.APP_HEIGHT));

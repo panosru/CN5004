@@ -7,7 +7,7 @@
 <?import javafx.scene.layout.VBox?>
 
 <SplitPane dividerPositions="0.17391304347826086" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity"
-           minWidth="-Infinity" prefHeight="400.0" prefWidth="640.0" xmlns="http://javafx.com/javafx/17"
+           minWidth="-Infinity" prefHeight="600.0" prefWidth="960" xmlns="http://javafx.com/javafx/17"
            xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.payroll.controller.MainController">
       <VBox alignment="CENTER" spacing="2.0">
          <ImageView fx:id="logo" fitHeight="60.0" fitWidth="60.0" pickOnBounds="true" preserveRatio="true">
