@@ -16,4 +16,6 @@ module com.payroll {
 
     opens com.payroll to javafx.fxml;
     exports com.payroll;
+    opens com.payroll.controller to javafx.fxml;
+    exports com.payroll.controller;
 }

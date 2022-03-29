@@ -167,7 +167,7 @@
     <build>
         <resources>
             <resource>
-                <directory>${basedir}/src/main/resources/com/payroll</directory>
+                <directory>${basedir}/src/main/resources</directory>
                 <filtering>false</filtering>
             </resource>
         </resources>
