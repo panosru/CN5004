@@ -12,20 +12,12 @@ Label {
 
 TextField,
 PasswordField {
-    -fx-background-color: #fff;
-    -fx-background-radius: 0;
     -fx-padding: 5px;
-    -fx-background-repeat: no-repeat;
-    -fx-background-size: 18px;
-    -fx-background-position: right 5px center;
-}
-
-TextField {
-    -fx-background-image: url('../images/icons/user-solid.png');
-}
-
-PasswordField {
-    -fx-background-image: url('../images/icons/key-solid.png');
+    -fx-border-color: #6647cd;
+    -fx-border-width: 0px 0px 2px 0px;
+    -fx-background-color: transparent;
+    -fx-background-radius: 0;
+    -fx-font-size: 18px;
 }
 
 .lblPay {
@@ -40,7 +32,7 @@ PasswordField {
     -fx-font-weight: bold;
 }
 
-.LoginBtn {
+#loginBtn {
     -fx-background-color: #0498fe;
     -fx-background-radius: 0;
     -fx-text-fill: #fff;
