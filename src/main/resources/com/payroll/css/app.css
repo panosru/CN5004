@@ -1,0 +1,11 @@
+.CloseBtn {
+    -fx-background-color: transparent;
+}
+
+.CloseBtn FontIcon {
+    -fx-fill: #6647cd;
+}
+
+.CloseBtn:hover FontIcon {
+    -fx-fill: red;
+}

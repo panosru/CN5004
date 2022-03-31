@@ -7,11 +7,18 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
+import javafx.scene.layout.BorderPane;
 
 import java.io.IOException;
 
 public class LoginController
 {
+    @FXML
+    private BorderPane borderPane;
+
+    @FXML
+    private Button closeBtn;
+
     @FXML
     private TextField username;
 
@@ -25,7 +32,9 @@ public class LoginController
     private Label errorMessage;
 
     public void initialize()
-    { }
+    {
+        App.enableDrag(borderPane);
+    }
 
     public void userLogin(ActionEvent event)
         throws IOException
@@ -42,5 +51,11 @@ public class LoginController
         {
             errorMessage.setText("Something went wrong!");
         }
+    }
+
+    public void closeApp(ActionEvent actionEvent)
+    {
+        App.closeWindow();
+        App.exit();
     }
 }
