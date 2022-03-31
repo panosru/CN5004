@@ -18,6 +18,7 @@ PasswordField {
     -fx-background-color: transparent;
     -fx-background-radius: 0;
     -fx-font-size: 18px;
+    -fx-prompt-text-fill: #B2B2B2;
 }
 
 .lblPay {
