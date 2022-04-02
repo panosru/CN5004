@@ -5,7 +5,7 @@ import javafx.event.ActionEvent;
 
 import java.io.IOException;
 
-public class MainController extends Controller
+public class MainController extends BaseController
 {
     public void logout(ActionEvent event)
         throws IOException
