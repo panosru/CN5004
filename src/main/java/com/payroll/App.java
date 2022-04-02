@@ -1,17 +1,18 @@
 package com.payroll;
 
 import com.payroll.common.Utils;
+
 import javafx.application.Application;
-import javafx.application.Platform;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.layout.BorderPane;
+import javafx.scene.layout.Pane;
 import javafx.scene.text.Font;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
 
 import java.io.IOException;
+import java.net.URL;
 import java.util.Objects;
 
 public class App
@@ -31,33 +32,26 @@ public class App
         if (!(Utils.isWindows() || Utils.isMac()))
         {
             //Load Arial font for all *nix platforms
-            Font.loadFont(
-                Objects.requireNonNull(
-                    getClass().getClassLoader().getResource("fonts/Arial.ttf")).toExternalForm(), 12);
+            Font.loadFont(getResource("fonts/Arial.ttf").toExternalForm(), 12);
         }
 
         stage.initStyle(StageStyle.UNDECORATED);
-        //stage.setTitle(Utils.TITLE);
         stage.setResizable(false);
-        loadScene("view/login.fxml");
+        loadScene("login");
         stage.show();
     }
 
     public static void loadScene(String fxml)
         throws IOException
     {
-        Parent pane = FXMLLoader.load(Objects.requireNonNull(App.class.getResource(fxml)));
+        Parent pane = FXMLLoader.load(getResource(String.format("view/%s.fxml", fxml)));
         getStage().setScene(new Scene(pane, Utils.APP_WIDTH, Utils.APP_HEIGHT));
     }
 
-    public static void closeWindow()
+    public static URL getResource(String path)
     {
-        getStage().close();
-    }
-
-    public static void exit()
-    {
-        Platform.exit();
+        return Objects.requireNonNull(
+            App.class.getResource(path));
     }
 
     public static Stage getStage()
@@ -65,7 +59,7 @@ public class App
         return stage;
     }
 
-    public static void enableDrag(BorderPane pane)
+    public static void enableDrag(Pane pane)
     {
         pane.setOnMousePressed(pressEvent -> {
             pane.setOnMouseDragged(dragEvent -> {
