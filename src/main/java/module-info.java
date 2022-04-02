@@ -13,9 +13,19 @@ module com.payroll {
     requires org.kordamp.ikonli.javafx;
     requires org.kordamp.bootstrapfx.core;
     requires eu.hansolo.tilesfx;
+    requires org.hibernate.orm.core;
+    requires java.persistence;
+    requires java.naming;
+    requires java.sql;
+    requires java.xml.bind;
+    requires java.logging;
+    requires java.prefs;
+    requires bcrypt;
 
     opens com.payroll to javafx.fxml;
     exports com.payroll;
+    opens com.payroll.persistence to org.hibernate.orm.core;
+    exports com.payroll.persistence;
     opens com.payroll.controller to javafx.fxml;
     exports com.payroll.controller;
 }
