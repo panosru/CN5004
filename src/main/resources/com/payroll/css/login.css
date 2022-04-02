@@ -33,6 +33,26 @@ PasswordField {
     -fx-font-weight: bold;
 }
 
+#rememberMe {
+    -fx-font-size: 14px;
+    -fx-text-fill: #565656;
+    -fx-font-weight: bold;
+}
+
+#rememberMe .box {
+    -fx-background-color: transparent;
+    -fx-border-color: #6647cd;
+    -fx-border-radius:3px;
+}
+
+#rememberMe:selected .mark {
+    -fx-background-color: white;
+}
+
+#rememberMe:selected .box {
+    -fx-background-color: #6647cd;
+}
+
 #loginBtn {
     -fx-background-color: #0498fe;
     -fx-background-radius: 0;

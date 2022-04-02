@@ -5,15 +5,11 @@ import javafx.event.ActionEvent;
 
 import java.io.IOException;
 
-public class MainController
+public class MainController extends Controller
 {
-    public void initialize()
-    {
-    }
-
     public void logout(ActionEvent event)
         throws IOException
     {
-        App.loadScene("view/login.fxml");
+        App.loadScene("login");
     }
 }

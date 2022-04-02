@@ -1,24 +1,21 @@
 package com.payroll.controller;
 
 import com.payroll.App;
+import com.payroll.common.Utils;
+import com.payroll.persistence.UserEntity;
+import com.payroll.service.CookieService;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
+import javafx.scene.control.CheckBox;
 import javafx.scene.control.Label;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
-import javafx.scene.layout.BorderPane;
 
 import java.io.IOException;
 
-public class LoginController
+public class LoginController extends Controller
 {
-    @FXML
-    private BorderPane borderPane;
-
-    @FXML
-    private Button closeBtn;
-
     @FXML
     private TextField username;
 
@@ -26,36 +23,74 @@ public class LoginController
     private PasswordField password;
 
     @FXML
+    private CheckBox rememberMe;
+
+    @FXML
     private Button loginBtn;
 
     @FXML
     private Label errorMessage;
 
+    @Override
     public void initialize()
     {
-        App.enableDrag(borderPane);
+        //if (CookieService.getInstance().getStore().getBoolean("rememberMe", false)
+        //&& CookieService.getInstance().getStore().get("username", "").equals(User.DefaultUsername)
+        //&&
+
+
+        super.initialize();
     }
 
     public void userLogin(ActionEvent event)
         throws IOException
     {
-        if (username.getText().equals("panosru") && password.getText().equals("123"))
+        try
         {
-            App.loadScene("view/main.fxml");
+            loginBtn.setDisable(true);
+            if (auth(username.getText(), password.getText()))
+            {
+                rememberLogin();
+                App.loadScene("main");
+            }
         }
-        else if (username.getText().isEmpty() || password.getText().isEmpty())
+        catch (IllegalArgumentException e)
         {
-            errorMessage.setText("Fill the data");
+            errorMessage.setText(e.getMessage());
         }
-        else
+        finally
         {
-            errorMessage.setText("Something went wrong!");
+            loginBtn.setDisable(false);
         }
     }
 
-    public void closeApp(ActionEvent actionEvent)
+    private boolean auth(String user, String pass)
     {
-        App.closeWindow();
-        App.exit();
+        if (username.getText().isEmpty() || password.getText().isEmpty())
+            throw new IllegalArgumentException("Username or password is empty!");
+
+        if (user.equals(UserEntity.DefaultUsername) && Utils.verifyHash(pass, UserEntity.DefaultPasswordHash))
+            return true;
+
+        throw new IllegalArgumentException("Username or password is wrong!");
+    }
+
+    private void rememberLogin()
+    {
+        if (rememberMe.isSelected())
+        {
+            String token = Utils.hashString(password.getText());
+
+            CookieService.getInstance().getStore().put("username", username.getText());
+            CookieService.getInstance().getStore().put("token", token);
+            CookieService.getInstance().getStore().putBoolean("rememberMe", true);
+        }
+    }
+
+    public static void forgetLogin()
+    {
+        CookieService.getInstance().getStore().remove("username");
+        CookieService.getInstance().getStore().remove("token");
+        CookieService.getInstance().getStore().remove("rememberMe");
     }
 }
