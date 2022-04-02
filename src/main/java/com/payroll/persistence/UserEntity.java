@@ -3,7 +3,6 @@ package com.payroll.persistence;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Table;
-import java.util.UUID;
 
 @Entity
 @Table(name = "users")
@@ -35,12 +34,6 @@ public class UserEntity
 
     public UserEntity()
     { }
-
-    public UserEntity(UUID id, String firstName, String lastName, String email)
-    {
-        this(firstName, lastName, email);
-        setId(id);
-    }
 
     public UserEntity(String firstName, String lastName, String email)
     {
