@@ -11,8 +11,6 @@ import java.util.Locale;
  */
 public final class Utils
 {
-    public static final int APP_WIDTH = 960;
-    public static final int APP_HEIGHT = 600;
     public static final String TITLE = "CN5004 - Payroll";
     public static final String OS = System.getProperty("os.name").toLowerCase(Locale.ENGLISH);
     public static final String USER_HOME_DIR = System.getProperty("user.home");
