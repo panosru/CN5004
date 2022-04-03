@@ -1,14 +1,13 @@
 package com.payroll.persistence;
 
-import com.payroll.service.ORMService;
+import jakarta.persistence.EntityManager;
+import jakarta.persistence.EntityManagerFactory;
+import jakarta.persistence.EntityTransaction;
+import jakarta.persistence.Persistence;
 import jakarta.persistence.TypedQuery;
 import jakarta.persistence.criteria.CriteriaBuilder;
 import jakarta.persistence.criteria.CriteriaQuery;
 import jakarta.persistence.criteria.Root;
-import org.hibernate.Session;
-import org.hibernate.SessionFactory;
-import org.hibernate.Transaction;
-import org.hibernate.query.Query;
 
 import java.lang.reflect.ParameterizedType;
 import java.util.List;
@@ -16,11 +15,13 @@ import java.util.UUID;
 
 public abstract class BaseRepository<T extends BaseEntity>
 {
-    protected final SessionFactory sessionFactory = ORMService.getInstance().getSessionFactory();
+    private final EntityManagerFactory emf = Persistence.createEntityManagerFactory("persistence");
 
-    protected final Session session = sessionFactory.openSession();
+    protected final EntityManager em = emf.createEntityManager();
 
-    protected Transaction transaction = session.getTransaction();
+    protected final CriteriaBuilder cb = em.getCriteriaBuilder();
+    
+    protected final EntityTransaction transaction = em.getTransaction();
 
     protected final Class<T> persistentClass;
 
@@ -36,19 +37,18 @@ public abstract class BaseRepository<T extends BaseEntity>
 
     public List<T> findAll()
     {
-        CriteriaBuilder cb = session.getCriteriaBuilder();
         CriteriaQuery<T> cq = cb.createQuery(persistentClass);
         Root<T> rootEntry = cq.from(persistentClass);
         CriteriaQuery<T> all = cq.select(rootEntry);
-        TypedQuery<T> allQuery = session.createQuery(all);
+        TypedQuery<T> allQuery = em.createQuery(all);
         return allQuery.getResultList();
     }
 
     public T findById(final UUID id)
     {
-        T entity = session.find(persistentClass, id);
+        T entity = em.find(persistentClass, id);
         if (entity != null)
-            session.detach(entity);
+            em.detach(entity);
 
         return entity;
     }
@@ -59,13 +59,13 @@ public abstract class BaseRepository<T extends BaseEntity>
         {
             transaction.begin();
 
-            if (session.contains(entity) || entity.getId() != null)
+            if (em.contains(entity) || entity.getId() != null)
             {
-                entity = (T) session.merge(entity);
+                entity = em.merge(entity);
             }
             else
             {
-                session.persist(entity);
+                em.persist(entity);
             }
             flushAndClear();
 
@@ -73,8 +73,7 @@ public abstract class BaseRepository<T extends BaseEntity>
         }
         catch (Exception e)
         {
-            if (transaction != null)
-                transaction.rollback();
+            transaction.rollback();
             e.printStackTrace();
         }
 
@@ -87,25 +86,24 @@ public abstract class BaseRepository<T extends BaseEntity>
         {
             transaction.begin();
 
-            session.remove(
-                session.contains(entity)
+            em.remove(
+                em.contains(entity)
                 ? entity
-                : session.getReference(entity.getClass(), entity.getId())
+                : em.getReference(entity.getClass(), entity.getId())
             );
             flushAndClear();
             transaction.commit();
         }
         catch (Exception e)
         {
-            if (transaction != null)
-                transaction.rollback();
+            transaction.rollback();
             e.printStackTrace();
         }
     }
 
     protected void flushAndClear()
     {
-        session.flush();
-        session.clear();
+        em.flush();
+        em.clear();
     }
 }
