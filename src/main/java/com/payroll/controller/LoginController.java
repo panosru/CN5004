@@ -4,6 +4,7 @@ import com.payroll.App;
 import com.payroll.common.Utils;
 import com.payroll.persistence.UserEntity;
 import com.payroll.service.CookieService;
+import javafx.animation.FadeTransition;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
@@ -31,9 +32,13 @@ public class LoginController extends BaseController
     @FXML
     private Label errorMessage;
 
+    private FadeTransition errorMessageFade;
+
     @Override
     public void initialize()
     {
+        errorMessageFade = Utils.fadeOut(errorMessage, 2000);;
+
         //if (CookieService.getInstance().getStore().getBoolean("rememberMe", false)
         //&& CookieService.getInstance().getStore().get("username", "").equals(User.DefaultUsername)
         //&&
@@ -57,6 +62,7 @@ public class LoginController extends BaseController
         catch (IllegalArgumentException e)
         {
             errorMessage.setText(e.getMessage());
+            errorMessageFade.playFromStart();
         }
         finally
         {
