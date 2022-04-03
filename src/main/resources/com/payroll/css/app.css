@@ -12,6 +12,7 @@
 
 .CloseBtn FontIcon {
     -fx-fill: #6647cd;
+    -fx-font-size: 18;
 }
 
 .CloseBtn:hover FontIcon {

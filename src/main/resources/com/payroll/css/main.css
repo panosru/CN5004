@@ -66,7 +66,7 @@
 
 #logoutBtn {
     -fx-background-color: transparent;
-    -fx-font-size: 14;
+    -fx-font-size: 16;
     -fx-graphic-text-gap: 10;
     -fx-text-fill: #ccc;
     -fx-alignment: center-left;
@@ -75,7 +75,7 @@
 
 #logoutBtn FontIcon {
     -fx-fill: #ccc;
-    -fx-font-size: 14;
+    -fx-font-size: 16;
 }
 
 #logoutBtn:hover {
