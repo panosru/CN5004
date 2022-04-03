@@ -14,17 +14,6 @@
       <URL value="@../css/main.css" />
       <URL value="@../css/app.css" />
    </stylesheets>
-   <right>
-      <AnchorPane id="master" prefHeight="800.0" prefWidth="800.0" styleClass="master" BorderPane.alignment="CENTER">
-         <children>
-            <Button fx:id="closeBtn" layoutX="779.0" layoutY="4.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#closeApp" prefHeight="15.0" prefWidth="15.0" styleClass="CloseBtn">
-               <graphic>
-                  <FontIcon iconColor="RED" iconLiteral="fas-window-close" iconSize="15" wrappingWidth="16.0" />
-               </graphic>
-            </Button>
-         </children>
-      </AnchorPane>
-   </right>
    <left>
       <AnchorPane id="sidebar" prefHeight="800.0" prefWidth="300.0" BorderPane.alignment="CENTER">
          <children>
