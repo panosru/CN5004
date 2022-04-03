@@ -4,7 +4,9 @@ import com.payroll.App;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.Node;
+import javafx.scene.control.Button;
 import javafx.scene.layout.BorderPane;
+import javafx.scene.layout.VBox;
 
 import java.io.IOException;
 
@@ -14,10 +16,28 @@ public class MainController
     @FXML
     BorderPane rootPane;
 
+    @FXML
+    VBox mainMenu;
+
+    @FXML
+    Button employeesBtn;
+
+    @FXML
+    Button paymentsBtn;
+
+    @FXML
+    Button statisticsBtn;
+
+    @FXML
+    Button profileBtn;
+
+    @FXML
+    Button settingsBtn;
+
     @Override
     public void initialize()
     {
-        loadPane("employees");
+        loadEmployees(null);
 
         super.initialize();
     }
@@ -47,26 +67,42 @@ public class MainController
 
     public void loadEmployees(ActionEvent actionEvent)
     {
+        setActiveButton(employeesBtn);
         loadPane("employees");
     }
 
     public void loadPayments(ActionEvent actionEvent)
     {
+        setActiveButton(paymentsBtn);
         loadPane("payments");
     }
 
     public void loadStatistics(ActionEvent actionEvent)
     {
+        setActiveButton(statisticsBtn);
         loadPane("statistics");
     }
 
     public void loadProfile(ActionEvent actionEvent)
     {
+        setActiveButton(profileBtn);
         loadPane("profile");
     }
 
     public void loadSettings(ActionEvent actionEvent)
     {
+        setActiveButton(settingsBtn);
         loadPane("settings");
+    }
+
+    private void setActiveButton(Button button)
+    {
+        mainMenu.getChildren().forEach(
+            b -> b.getStyleClass().removeIf(
+                style -> style.equals("active")
+            )
+        );
+
+        button.getStyleClass().add("active");
     }
 }

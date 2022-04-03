@@ -35,7 +35,8 @@
     -fx-graphic-text-gap: 30;
 }
 
-#mainMenu Button:hover {
+#mainMenu Button:hover,
+#mainMenu Button.active {
     -fx-background-color: #6144C3;
 }
 

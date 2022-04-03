@@ -17,29 +17,29 @@
    <left>
       <AnchorPane id="sidebar" prefHeight="800.0" prefWidth="300.0" BorderPane.alignment="CENTER">
          <children>
-            <VBox id="mainMenu" layoutX="21.0" layoutY="197.0" prefHeight="446.0" prefWidth="256.0">
+            <VBox fx:id="mainMenu" layoutX="21.0" layoutY="197.0" prefHeight="446.0" prefWidth="256.0">
                <children>
-                  <Button graphicTextGap="10" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#loadEmployees" prefHeight="52.0" prefWidth="256.0" text="Employees">
+                  <Button graphicTextGap="10" maxWidth="1.7976931348623157E308" mnemonicParsing="false" fx:id="employeesBtn" onAction="#loadEmployees" prefHeight="52.0" prefWidth="256.0" text="Employees">
                      <graphic>
                         <FontIcon iconLiteral="fas-user-tie" />
                      </graphic>
                   </Button>
-                  <Button maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#loadPayments" text="Payments">
+                  <Button maxWidth="1.7976931348623157E308" mnemonicParsing="false" fx:id="paymentsBtn" onAction="#loadPayments" text="Payments">
                      <graphic>
                         <FontIcon iconLiteral="fas-money-bill-wave" />
                      </graphic>
                   </Button>
-                  <Button maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#loadStatistics" text="Statistics">
+                  <Button maxWidth="1.7976931348623157E308" mnemonicParsing="false" fx:id="statisticsBtn" onAction="#loadStatistics" text="Statistics">
                      <graphic>
                         <FontIcon iconLiteral="fas-chart-bar" />
                      </graphic>
                   </Button>
-                  <Button maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#loadProfile" text="Profile">
+                  <Button maxWidth="1.7976931348623157E308" mnemonicParsing="false" fx:id="profileBtn" onAction="#loadProfile" text="Profile">
                      <graphic>
                         <FontIcon iconLiteral="fas-user-cog" />
                      </graphic>
                   </Button>
-                  <Button maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#loadSettings" text="Settings">
+                  <Button maxWidth="1.7976931348623157E308" mnemonicParsing="false" fx:id="settingsBtn" onAction="#loadSettings" text="Settings">
                      <graphic>
                         <FontIcon iconLiteral="fas-cogs" />
                      </graphic>
