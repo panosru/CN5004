@@ -26,3 +26,62 @@
     -fx-background-color: lightgray;
     -fx-alignment: center;
 }
+
+#mainMenu Button {
+    -fx-background-color: transparent;
+    -fx-text-fill: #f1f1f1;
+    -fx-padding: 30;
+    -fx-alignment: center-left;
+    -fx-graphic-text-gap: 30;
+}
+
+#mainMenu Button:hover {
+    -fx-background-color: #6144C3;
+}
+
+#mainMenu Button FontIcon {
+    -fx-fill: #f1f1f1;
+    -fx-alignment: center-left;
+}
+
+.logo Label {
+    -fx-background-color: transparent;
+    -fx-font-weight: bold;
+}
+
+.lblPay {
+    -fx-text-fill: #f74d4d;
+    -fx-font-size: 52px;
+}
+
+.lblRoll {
+    -fx-text-fill: #f1f1f1;
+    -fx-font-size: 42px;
+}
+
+.logo FontIcon {
+    -fx-fill: #f74d4d;
+    -fx-font-size: 70;
+}
+
+#logoutBtn {
+    -fx-background-color: transparent;
+    -fx-font-size: 14;
+    -fx-graphic-text-gap: 10;
+    -fx-text-fill: #ccc;
+    -fx-alignment: center-left;
+    -fx-padding: 0;
+}
+
+#logoutBtn FontIcon {
+    -fx-fill: #ccc;
+    -fx-font-size: 14;
+}
+
+#logoutBtn:hover {
+    -fx-text-fill: white;
+}
+
+#logoutBtn:hover FontIcon {
+    -fx-fill: white;
+}
