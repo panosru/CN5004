@@ -5,6 +5,7 @@ import com.payroll.common.Utils;
 
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
+import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.layout.Pane;
@@ -38,14 +39,20 @@ public class App
 
         stage.initStyle(StageStyle.UNDECORATED);
         stage.setResizable(false);
-        loadScene("login");
+        loadScene("main");
         stage.show();
+    }
+
+    public static Node loadNode(String fxml)
+        throws IOException
+    {
+        return FXMLLoader.load(getResource(String.format("view/%s.fxml", fxml)));
     }
 
     public static void loadScene(String fxml)
         throws IOException
     {
-        Parent pane = FXMLLoader.load(getResource(String.format("view/%s.fxml", fxml)));
+        Parent pane = (Parent) loadNode(fxml);
         getStage().setScene(new Scene(pane));
     }
 
@@ -62,12 +69,13 @@ public class App
 
     public static void enableDrag(Pane pane)
     {
-        pane.setOnMousePressed(pressEvent -> {
-            pane.setOnMouseDragged(dragEvent -> {
-                getStage().setX(dragEvent.getScreenX() - pressEvent.getSceneX());
-                getStage().setY(dragEvent.getScreenY() - pressEvent.getSceneY());
+        if (pane != null)
+            pane.setOnMousePressed(pressEvent -> {
+                pane.setOnMouseDragged(dragEvent -> {
+                    getStage().setX(dragEvent.getScreenX() - pressEvent.getSceneX());
+                    getStage().setY(dragEvent.getScreenY() - pressEvent.getSceneY());
+                });
             });
-        });
     }
 
     public static void main(String[] args)
