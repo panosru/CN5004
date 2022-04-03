@@ -46,7 +46,7 @@ public class App
         throws IOException
     {
         Parent pane = FXMLLoader.load(getResource(String.format("view/%s.fxml", fxml)));
-        getStage().setScene(new Scene(pane, Utils.APP_WIDTH, Utils.APP_HEIGHT));
+        getStage().setScene(new Scene(pane));
     }
 
     public static URL getResource(String path)
