@@ -5,16 +5,12 @@ public class UserRepository
 {
     public UserEntity getUserByEmail(String email)
     {
-        return em.createQuery("SELECT u FROM UserEntity u WHERE u.email = :email", persistentClass)
-                 .setParameter("email", email)
-                 .getSingleResult();
+        return findByX("email", email);
     }
 
     public UserEntity getUserByUsername(String username)
     {
-        return em.createQuery("SELECT u FROM UserEntity u WHERE u.username = :username", persistentClass)
-                 .setParameter("username", username)
-                 .getSingleResult();
+        return findByX("username", username);
     }
 
     public void updateToken(String token)

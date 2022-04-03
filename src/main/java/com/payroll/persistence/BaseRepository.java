@@ -3,11 +3,13 @@ package com.payroll.persistence;
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.EntityManagerFactory;
 import jakarta.persistence.EntityTransaction;
+import jakarta.persistence.NoResultException;
 import jakarta.persistence.Persistence;
 import jakarta.persistence.TypedQuery;
 import jakarta.persistence.criteria.CriteriaBuilder;
 import jakarta.persistence.criteria.CriteriaQuery;
 import jakarta.persistence.criteria.Root;
+import org.jetbrains.annotations.NotNull;
 
 import java.lang.reflect.ParameterizedType;
 import java.util.List;
@@ -25,22 +27,27 @@ public abstract class BaseRepository<T extends BaseEntity>
 
     protected final Class<T> persistentClass;
 
+    protected final CriteriaQuery<T> criteria;
+
+    protected final Root<T> from;
+
     protected BaseRepository()
     {
         // Using reflection to get the class of the given type via reflection.
         // Will not work with dynamic proxies.
-        this.persistentClass = (Class<T>)
+        persistentClass = (Class<T>)
             ((ParameterizedType)getClass()
                 .getGenericSuperclass())
                 .getActualTypeArguments()[0];
+
+        criteria = cb.createQuery(persistentClass);
+        from = criteria.from(persistentClass);
     }
 
     public List<T> findAll()
     {
-        CriteriaQuery<T> cq = cb.createQuery(persistentClass);
-        Root<T> rootEntry = cq.from(persistentClass);
-        CriteriaQuery<T> all = cq.select(rootEntry);
-        TypedQuery<T> allQuery = em.createQuery(all);
+        criteria.select(from);
+        TypedQuery<T> allQuery = em.createQuery(criteria);
         return allQuery.getResultList();
     }
 
@@ -51,6 +58,22 @@ public abstract class BaseRepository<T extends BaseEntity>
             em.detach(entity);
 
         return entity;
+    }
+
+    public <X> T findByX(@NotNull final String field, @NotNull final X value)
+    {
+        criteria.select(from);
+        criteria.where(cb.equal(from.get(field), value));
+        TypedQuery<T> typedQuery = em.createQuery(criteria);
+
+        try
+        {
+            return typedQuery.getSingleResult();
+        }
+        catch (final NoResultException nre)
+        {
+            return null;
+        }
     }
 
     public T save(T entity)
