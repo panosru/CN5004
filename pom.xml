@@ -202,9 +202,6 @@
                 <configuration>
                     <source>${maven.compiler.source}</source>
                     <target>${maven.compiler.target}</target>
-                    <!--<compilerArguments>
-                        <processor>org.hibernate.jpamodelgen.JPAMetaModelEntityProcessor</processor>
-                    </compilerArguments>-->
                 </configuration>
             </plugin>
             <plugin>
@@ -214,7 +211,7 @@
                 <configuration>
                     <skip>${mavn.jar.skip}</skip>
                     <archive>
-                        <manifestFile>${project.build.outputDirectory}/com/payroll/META-INF/MANIFEST.MF</manifestFile>
+                        <manifestFile>${project.build.outputDirectory}/META-INF/MANIFEST.MF</manifestFile>
                     </archive>
                 </configuration>
             </plugin>
