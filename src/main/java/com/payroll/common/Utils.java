@@ -1,6 +1,9 @@
 package com.payroll.common;
 
 import at.favre.lib.crypto.bcrypt.BCrypt;
+import javafx.animation.FadeTransition;
+import javafx.scene.Node;
+import javafx.util.Duration;
 import org.jetbrains.annotations.NotNull;
 
 import java.io.File;
@@ -109,5 +112,56 @@ public final class Utils
      */
     public static boolean verifyHash(String s, String stored_hash) {
         return (BCrypt.verifyer().verify(s.toCharArray(), stored_hash)).verified;
+    }
+
+    /**
+     * Fade in a node.
+     * @param node the node to fade in.
+     * @param millis the duration of the fade in.
+     * @return the node.
+     */
+    public static FadeTransition fadeIn(Node node, int millis)
+    {
+        return fade(node, millis, true);
+    }
+
+    /**
+     * Fade in a node.
+     * @param node the node to fade in.
+     * @param millis the duration of the fade in.
+     * @return the fade transition.
+     */
+    public static FadeTransition fadeOut(Node node, int millis)
+    {
+        return fade(node, millis, false);
+    }
+
+    /**
+     * Fade in or out a node.
+     * @param node the node to fade.
+     * @param millis the duration of the fade.
+     * @param in true if the node should fade in, false if it should fade out.
+     * @return the fade transition.
+     */
+    public static FadeTransition fade(Node node, int millis, boolean in)
+    {
+        FadeTransition f = new FadeTransition(Duration.millis(millis));
+        f.setNode(node);
+
+        // case IN is the default behaviour
+        double start = 0.0, stop = 1.0;
+
+        if (!in)
+        {
+            start = 1.0;
+            stop = 0.0;
+        }
+
+        f.setFromValue(start);
+        f.setToValue(stop);
+        f.setCycleCount(1);
+        f.setAutoReverse(false);
+
+        return f;
     }
 }
