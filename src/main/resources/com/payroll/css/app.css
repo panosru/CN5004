@@ -1,3 +1,11 @@
+#master {
+    -fx-background-color: #f1f1f1;
+}
+
+#sidebar {
+    -fx-background-color: #6647cd;
+}
+
 .CloseBtn {
     -fx-background-color: transparent;
 }

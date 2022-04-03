@@ -1,11 +1,3 @@
-.container {
-    -fx-background-color: #f1f1f1;
-}
-
-#leftPane {
-    -fx-background-color: #6647cd;
-}
-
 Label {
     -fx-font-size: 18px;
 }
@@ -62,6 +54,6 @@ PasswordField {
     -fx-padding: 5px;
 }
 
-.LoginBtn:hover {
+#loginBtn:hover {
     -fx-background-color: #6647cd;
 }

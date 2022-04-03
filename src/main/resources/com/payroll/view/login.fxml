@@ -11,15 +11,19 @@
 <?import org.kordamp.ikonli.javafx.FontIcon?>
 
 <BorderPane id="LoginContainer" fx:id="rootPane" prefHeight="500.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.payroll.controller.LoginController">
+   <stylesheets>
+      <URL value="@../css/login.css" />
+      <URL value="@../css/app.css" />
+   </stylesheets>
    <left>
-      <AnchorPane id="leftPane" prefHeight="500.0" prefWidth="300.0" BorderPane.alignment="CENTER">
+      <AnchorPane id="sidebar" prefHeight="500.0" prefWidth="300.0" BorderPane.alignment="CENTER">
          <children>
             <FontIcon iconColor="WHITE" iconLiteral="fas-euro-sign" iconSize="350" layoutX="46.0" layoutY="381.0" />
          </children>
       </AnchorPane>
    </left>
    <right>
-      <AnchorPane prefHeight="500.0" prefWidth="500.0" BorderPane.alignment="CENTER">
+      <AnchorPane id="master" prefHeight="500.0" prefWidth="500.0" BorderPane.alignment="CENTER">
          <children>
             <Label layoutX="126.0" layoutY="74.0" styleClass="lblPay" text="PAY" />
             <Label layoutX="123.0" layoutY="139.0" styleClass="lblRoll" text="ROLL" />
@@ -39,8 +43,4 @@
          </children>
       </AnchorPane>
    </right>
-   <stylesheets>
-      <URL value="@../css/login.css" />
-      <URL value="@../css/app.css" />
-   </stylesheets>
 </BorderPane>
