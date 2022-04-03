@@ -14,10 +14,10 @@ module com.payroll {
     requires org.kordamp.bootstrapfx.core;
     requires eu.hansolo.tilesfx;
     requires org.hibernate.orm.core;
-    requires java.persistence;
+    requires jakarta.persistence;
+    requires jakarta.transaction;
     requires java.naming;
     requires java.sql;
-    requires java.xml.bind;
     requires java.logging;
     requires java.prefs;
     requires bcrypt;

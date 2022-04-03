@@ -5,14 +5,14 @@ public class UserRepository
 {
     public UserEntity getUserByEmail(String email)
     {
-        return entityManager.createQuery("SELECT u FROM UserEntity u WHERE u.email = :email", UserEntity.class)
+        return session.createQuery("SELECT u FROM UserEntity u WHERE u.email = :email", UserEntity.class)
                 .setParameter("email", email)
                 .getSingleResult();
     }
 
     public UserEntity getUserByUsername(String username)
     {
-        return entityManager.createQuery("SELECT u FROM UserEntity u WHERE u.username = :username", UserEntity.class)
+        return session.createQuery("SELECT u FROM UserEntity u WHERE u.username = :username", UserEntity.class)
                 .setParameter("username", username)
                 .getSingleResult();
     }
