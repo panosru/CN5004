@@ -1,6 +1,5 @@
 package com.payroll;
 
-import com.payroll.common.Demo;
 import com.payroll.common.Utils;
 
 import javafx.application.Application;
@@ -39,7 +38,7 @@ public class App
 
         stage.initStyle(StageStyle.UNDECORATED);
         stage.setResizable(false);
-        loadScene("main");
+        loadScene("login");
         stage.show();
     }
 
