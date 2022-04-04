@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import org.kordamp.ikonli.javafx.FontIcon?>
+
+<Button xmlns="http://javafx.com/javafx"  xmlns:fx="http://javafx.com/fxml"
+        fx:id="closeBtn" maxHeight="-Infinity" maxWidth="-Infinity"
+        minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#closeApp"
+        prefHeight="15.0" prefWidth="15.0" styleClass="CloseBtn"  fx:controller="com.cn5004ap.payroll.controller.CloseController">
+    <graphic>
+        <FontIcon iconLiteral="fas-window-close" wrappingWidth="16.0" />
+    </graphic>
+</Button>
