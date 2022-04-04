@@ -4,8 +4,8 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
 
-    <groupId>com.payroll</groupId>
-    <artifactId>CN5004-payroll</artifactId>
+    <groupId>com.cn5004ap</groupId>
+    <artifactId>cn5004ap-payroll</artifactId>
     <version>1.0-SNAPSHOT</version>
     <name>payroll</name>
 
@@ -68,38 +68,6 @@
             <version>18</version>
         </dependency>
         <dependency>
-            <groupId>org.openjfx</groupId>
-            <artifactId>javafx-web</artifactId>
-            <version>18</version>
-        </dependency>
-        <dependency>
-            <groupId>org.controlsfx</groupId>
-            <artifactId>controlsfx</artifactId>
-            <version>11.1.1</version>
-        </dependency>
-        <dependency>
-            <groupId>com.dlsc.formsfx</groupId>
-            <artifactId>formsfx-core</artifactId>
-            <version>11.5.0</version>
-            <exclusions>
-                <exclusion>
-                    <groupId>org.openjfx</groupId>
-                    <artifactId>*</artifactId>
-                </exclusion>
-            </exclusions>
-        </dependency>
-        <dependency>
-            <groupId>net.synedra</groupId>
-            <artifactId>validatorfx</artifactId>
-            <version>0.3.1</version>
-            <exclusions>
-                <exclusion>
-                    <groupId>org.openjfx</groupId>
-                    <artifactId>*</artifactId>
-                </exclusion>
-            </exclusions>
-        </dependency>
-        <dependency>
             <groupId>org.kordamp.ikonli</groupId>
             <artifactId>ikonli-javafx</artifactId>
             <version>12.3.1</version>
@@ -110,9 +78,9 @@
             <version>12.3.1</version>
         </dependency>
         <dependency>
-            <groupId>org.kordamp.bootstrapfx</groupId>
-            <artifactId>bootstrapfx-core</artifactId>
-            <version>0.4.0</version>
+            <groupId>org.jetbrains</groupId>
+            <artifactId>annotations</artifactId>
+            <version>23.0.0</version>
         </dependency>
         <dependency>
             <groupId>org.junit.jupiter</groupId>
@@ -131,21 +99,6 @@
             <artifactId>junit-platform-launcher</artifactId>
             <version>1.8.2</version>
             <scope>test</scope>
-        </dependency>
-        <dependency>
-            <groupId>commons-io</groupId>
-            <artifactId>commons-io</artifactId>
-            <version>2.11.0</version>
-        </dependency>
-        <dependency>
-            <groupId>org.jetbrains</groupId>
-            <artifactId>annotations</artifactId>
-            <version>23.0.0</version>
-        </dependency>
-        <dependency>
-            <groupId>org.apache.commons</groupId>
-            <artifactId>commons-lang3</artifactId>
-            <version>3.12.0</version>
         </dependency>
         <dependency>
             <groupId>org.hamcrest</groupId>
@@ -321,7 +274,7 @@
                                         <argument>-createjar</argument>
                                         <argument>-nocss2bin</argument>
                                         <argument>-appclass</argument>
-                                        <argument>com.payroll.App</argument>
+                                        <argument>com.cn5004ap.payroll.App</argument>
                                         <argument>-srcdir</argument>
                                         <argument>${project.build.directory}/classes</argument>
                                         <argument>-outdir</argument>
@@ -354,7 +307,7 @@
                                 <!-- Default configuration for running with: mvn clean javafx:run -->
                                 <id>default-cli</id>
                                 <configuration>
-                                    <mainClass>com.payroll.App</mainClass>
+                                    <mainClass>com.cn5004ap.payroll.App</mainClass>
                                 </configuration>
                             </execution>
                         </executions>
