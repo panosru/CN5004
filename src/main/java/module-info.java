@@ -11,6 +11,7 @@ module com.cn5004ap.payroll {
     requires org.jetbrains.annotations;
     requires org.hibernate.orm.core;
     requires bcrypt;
+    requires MaterialFX;
 
     opens com.cn5004ap.payroll.controller to javafx.fxml;
     opens com.cn5004ap.payroll.persistence to org.hibernate.orm.core;
