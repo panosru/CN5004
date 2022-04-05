@@ -12,6 +12,8 @@ import javafx.scene.control.CheckBox;
 import javafx.scene.control.Label;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
+import javafx.scene.input.KeyCode;
+import javafx.scene.input.KeyEvent;
 
 import java.io.IOException;
 
@@ -37,7 +39,11 @@ public class LoginController extends BaseController
     @Override
     public void initialize()
     {
-        errorMessageFade = Utils.fadeOut(errorMessage, 2000);;
+        errorMessageFade = Utils.fadeOut(errorMessage, 2000);
+
+        // Submit login form on Enter keyUp
+        username.setOnKeyReleased(this::submitOnEnter);
+        password.setOnKeyReleased(this::submitOnEnter);
 
         //if (CookieService.getInstance().getStore().getBoolean("rememberMe", false)
         //&& CookieService.getInstance().getStore().get("username", "").equals(User.DefaultUsername)
@@ -45,6 +51,19 @@ public class LoginController extends BaseController
 
 
         super.initialize();
+    }
+
+    private void submitOnEnter(KeyEvent event)
+    {
+        if (event.getCode().equals(KeyCode.ENTER))
+            try
+            {
+                userLogin(null);
+            }
+            catch (IOException e)
+            {
+                e.printStackTrace();
+            }
     }
 
     public void userLogin(ActionEvent event)
