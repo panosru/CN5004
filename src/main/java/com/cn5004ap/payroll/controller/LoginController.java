@@ -10,8 +10,8 @@ import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.CheckBox;
 import javafx.scene.control.Label;
-import javafx.scene.control.PasswordField;
-import javafx.scene.control.TextField;
+import io.github.palexdev.materialfx.controls.MFXTextField;
+import io.github.palexdev.materialfx.controls.MFXPasswordField;
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
 
@@ -20,10 +20,10 @@ import java.io.IOException;
 public class LoginController extends BaseController
 {
     @FXML
-    private TextField username;
+    private MFXTextField username;
 
     @FXML
-    private PasswordField password;
+    private MFXPasswordField password;
 
     @FXML
     private CheckBox rememberMe;

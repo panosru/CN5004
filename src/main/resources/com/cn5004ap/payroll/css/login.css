@@ -2,15 +2,30 @@ Label {
     -fx-font-size: 18px;
 }
 
-TextField,
-PasswordField {
-    -fx-padding: 5px;
+.textFieldPane {
     -fx-border-color: #6647cd;
     -fx-border-width: 0px 0px 2px 0px;
+}
+
+MFXTextField,
+MFXPasswordField {
+    -fx-border-color: transparent;
+    -fx-border-width: 0px;
     -fx-background-color: transparent;
     -fx-background-radius: 0;
+    -fx-border-radius: 0;
     -fx-font-size: 18px;
-    -fx-prompt-text-fill: #B2B2B2;
+}
+
+MFXTextField .floating-text,
+MFXPasswordField .floating-text {
+    -fx-text-fill: #999999;
+    -fx-background-color: transparent;
+}
+
+MFXTextField:floating .floating-text,
+MFXPasswordField:floating .floating-text {
+    -fx-text-fill: #B2B2B2;
 }
 
 .lblPay {
