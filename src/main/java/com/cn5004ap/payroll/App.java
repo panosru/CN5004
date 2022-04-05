@@ -69,12 +69,10 @@ public class App
     public static void enableDrag(Pane pane)
     {
         if (pane != null)
-            pane.setOnMousePressed(pressEvent -> {
-                pane.setOnMouseDragged(dragEvent -> {
-                    getStage().setX(dragEvent.getScreenX() - pressEvent.getSceneX());
-                    getStage().setY(dragEvent.getScreenY() - pressEvent.getSceneY());
-                });
-            });
+            pane.setOnMousePressed(pressEvent -> pane.setOnMouseDragged(dragEvent -> {
+                getStage().setX(dragEvent.getScreenX() - pressEvent.getSceneX());
+                getStage().setY(dragEvent.getScreenY() - pressEvent.getSceneY());
+            }));
     }
 
     public static void main(String[] args)
