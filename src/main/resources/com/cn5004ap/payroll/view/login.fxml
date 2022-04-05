@@ -11,7 +11,7 @@
 <?import javafx.scene.layout.Pane?>
 <?import org.kordamp.ikonli.javafx.FontIcon?>
 
-<BorderPane id="LoginContainer" fx:id="rootPane" prefHeight="500.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.cn5004ap.payroll.controller.LoginController">
+<BorderPane id="LoginContainer" fx:id="rootPane" prefHeight="500.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.cn5004ap.payroll.controller.LoginController">
    <stylesheets>
       <URL value="@../css/login.css" />
       <URL value="@../css/app.css" />
