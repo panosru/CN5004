@@ -3,7 +3,7 @@
 <?import javafx.scene.control.*?>
 <?import org.kordamp.ikonli.javafx.FontIcon?>
 
-<Button xmlns="http://javafx.com/javafx"  xmlns:fx="http://javafx.com/fxml"
+<Button xmlns="http://javafx.com/javafx/18"  xmlns:fx="http://javafx.com/fxml/1"
         fx:id="closeBtn" maxHeight="-Infinity" maxWidth="-Infinity"
         minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#closeApp"
         prefHeight="15.0" prefWidth="15.0" styleClass="CloseBtn"  fx:controller="com.cn5004ap.payroll.controller.CloseController">

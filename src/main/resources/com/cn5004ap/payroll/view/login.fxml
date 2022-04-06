@@ -26,22 +26,22 @@
    <right>
       <AnchorPane id="master" prefHeight="500.0" prefWidth="500.0" BorderPane.alignment="CENTER">
          <children>
-            <fx:include layoutX="480.0" layoutY="4.0" source="shared/closeBtn.fxml" />
-            <Label layoutX="134.0" layoutY="73.0" styleClass="lblPay" text="PAY" />
-            <Label layoutX="131.0" layoutY="138.0" styleClass="lblRoll" text="ROLL" />
-            <FontIcon iconColor="RED" iconLiteral="fas-users" iconSize="100" layoutX="244.0" layoutY="169.0" />
-            <Pane layoutX="99.0" layoutY="211.0" prefHeight="65.0" prefWidth="340.0" styleClass="textFieldPane">
+            <fx:include layoutX="478.0" layoutY="4.0" source="shared/closeBtn.fxml" />
+            <Label layoutX="128.0" layoutY="72.0" styleClass="lblPay" text="PAY" />
+            <Label layoutX="125.0" layoutY="137.0" styleClass="lblRoll" text="ROLL" />
+            <FontIcon iconColor="RED" iconLiteral="fas-users" iconSize="100" layoutX="238.0" layoutY="168.0" />
+            <Pane layoutX="74.0" layoutY="205.0" prefHeight="65.0" prefWidth="340.0" styleClass="textFieldPane">
                <children>
                   <FontIcon iconColor="#6647cd" iconLiteral="fas-user" iconSize="24" layoutX="310.0" layoutY="41.0" />
                   <MFXTextField fx:id="username" floatingText="Username" prefHeight="40.0" prefWidth="300.0" />
                </children></Pane>
-            <Pane layoutX="99.0" layoutY="276.0" prefHeight="65.0" prefWidth="340.0" styleClass="textFieldPane">
+            <Pane layoutX="74.0" layoutY="276.0" prefHeight="65.0" prefWidth="340.0" styleClass="textFieldPane">
                <children>
                   <FontIcon iconColor="#6647cd" iconLiteral="fas-key" iconSize="24" layoutX="310.0" layoutY="42.0" />
                   <MFXPasswordField fx:id="password" floatingText="Password" prefHeight="40.0" prefWidth="300.0" />
                </children></Pane>
-            <MFXCheckbox fx:id="rememberMe" layoutX="99.0" layoutY="357.0" text="Remember me" />
-            <MFXButton fx:id="loginBtn" layoutX="219.0" layoutY="397.0" onAction="#userLogin" prefHeight="27.0" prefWidth="100.0" text="Login" />
+            <MFXCheckbox fx:id="rememberMe" layoutX="74.0" layoutY="357.0" text="Remember me" />
+            <MFXButton fx:id="loginBtn" layoutX="194.0" layoutY="397.0" onAction="#userLogin" prefHeight="27.0" prefWidth="100.0" text="Login" />
             <Label fx:id="errorMessage" alignment="CENTER" layoutX="29.0" layoutY="457.0" prefHeight="23.0" prefWidth="442.0" textAlignment="CENTER" textFill="RED" />
          </children>
       </AnchorPane>

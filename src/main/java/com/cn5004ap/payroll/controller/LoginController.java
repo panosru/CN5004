@@ -1,23 +1,25 @@
 package com.cn5004ap.payroll.controller;
 
 import com.cn5004ap.payroll.App;
-import com.cn5004ap.payroll.service.CookieService;
 import com.cn5004ap.payroll.common.Utils;
 import com.cn5004ap.payroll.persistence.UserEntity;
+import com.cn5004ap.payroll.service.CookieService;
+import io.github.palexdev.materialfx.controls.MFXButton;
+import io.github.palexdev.materialfx.controls.MFXPasswordField;
+import io.github.palexdev.materialfx.controls.MFXTextField;
 import javafx.animation.FadeTransition;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.scene.control.Button;
 import javafx.scene.control.CheckBox;
 import javafx.scene.control.Label;
-import io.github.palexdev.materialfx.controls.MFXTextField;
-import io.github.palexdev.materialfx.controls.MFXPasswordField;
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
+import javafx.util.Duration;
 
 import java.io.IOException;
 
-public class LoginController extends BaseController
+public class LoginController
+    extends BaseController
 {
     @FXML
     private MFXTextField username;
@@ -29,17 +31,38 @@ public class LoginController extends BaseController
     private CheckBox rememberMe;
 
     @FXML
-    private Button loginBtn;
+    private MFXButton loginBtn;
 
     @FXML
     private Label errorMessage;
 
     private FadeTransition errorMessageFade;
 
+    private int attempts;
+
+    public static void forgetLogin()
+    {
+        CookieService.getInstance().getStore().remove("username");
+        CookieService.getInstance().getStore().remove("token");
+        CookieService.getInstance().getStore().remove("rememberMe");
+    }
+
     @Override
     public void initialize()
     {
-        errorMessageFade = Utils.fadeOut(errorMessage, 2000);
+        // Attach animation to error message label
+        errorMessageFade = Utils.fadeOut(errorMessage, 1000);
+
+        // Reset the label on animation complete
+        errorMessageFade.setOnFinished(
+            e ->
+            {
+               errorMessage.setText("");
+               errorMessage.setOpacity(1);
+               errorMessageFade.jumpTo(Duration.ZERO);
+               errorMessageFade.stop();
+               loginBtn.setDisable(false);
+           });
 
         // Submit login form on Enter keyUp
         username.setOnKeyReleased(this::submitOnEnter);
@@ -49,18 +72,20 @@ public class LoginController extends BaseController
         //&& CookieService.getInstance().getStore().get("username", "").equals(User.DefaultUsername)
         //&&
 
-
         super.initialize();
     }
 
     private void submitOnEnter(KeyEvent event)
     {
+        if (loginBtn.isDisabled())
+            return;
+
         if (event.getCode().equals(KeyCode.ENTER))
             try
             {
                 userLogin(null);
             }
-            catch (IOException e)
+            catch (Exception e)
             {
                 e.printStackTrace();
             }
@@ -69,9 +94,12 @@ public class LoginController extends BaseController
     public void userLogin(ActionEvent event)
         throws IOException
     {
+        loginBtn.textProperty().unbind();
+
         try
         {
             loginBtn.setDisable(true);
+
             if (auth(username.getText(), password.getText()))
             {
                 rememberLogin();
@@ -81,23 +109,32 @@ public class LoginController extends BaseController
         catch (IllegalArgumentException e)
         {
             errorMessage.setText(e.getMessage());
-            errorMessageFade.playFromStart();
         }
         finally
         {
-            loginBtn.setDisable(false);
+            if (5 <= ++attempts)
+            {
+                username.setDisable(true);
+                password.setDisable(true);
+                rememberMe.setDisable(true);
+                errorMessage.setText("Maximum login attempts made (5).");
+            }
+            else
+            {
+                Utils.runJobTimeoutAsync(() -> errorMessageFade.play(), 1000 * attempts);
+            }
         }
     }
 
     private boolean auth(String user, String pass)
     {
-        if (username.getText().isEmpty() || password.getText().isEmpty())
-            throw new IllegalArgumentException("Username or password is empty!");
+        if (user.isEmpty() || pass.isEmpty())
+            throw new IllegalArgumentException("Please fill both username and password.");
 
-        if (user.equals(UserEntity.DefaultUsername) && Utils.verifyHash(pass, UserEntity.DefaultPasswordHash))
-            return true;
+        if (!user.equals(UserEntity.DefaultUsername) && !Utils.verifyHash(pass, UserEntity.DefaultPasswordHash))
+            throw new IllegalArgumentException("Invalid credentials.");
 
-        throw new IllegalArgumentException("Username or password is wrong!");
+        return true;
     }
 
     private void rememberLogin()
@@ -110,12 +147,5 @@ public class LoginController extends BaseController
             CookieService.getInstance().getStore().put("token", token);
             CookieService.getInstance().getStore().putBoolean("rememberMe", true);
         }
-    }
-
-    public static void forgetLogin()
-    {
-        CookieService.getInstance().getStore().remove("username");
-        CookieService.getInstance().getStore().remove("token");
-        CookieService.getInstance().getStore().remove("rememberMe");
     }
 }
