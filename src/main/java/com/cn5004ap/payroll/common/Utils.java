@@ -146,7 +146,6 @@ public final class Utils
     public static FadeTransition fade(Node node, int millis, boolean in)
     {
         FadeTransition f = new FadeTransition(Duration.millis(millis));
-        f.setNode(node);
 
         // case IN is the default behaviour
         double start = 0.0, stop = 1.0;
@@ -159,9 +158,36 @@ public final class Utils
 
         f.setFromValue(start);
         f.setToValue(stop);
-        f.setCycleCount(1);
-        f.setAutoReverse(false);
+        f.setNode(node);
 
         return f;
+    }
+
+    /**
+     * Run a lambda after a certain delay on a separate thread.
+     * @param runnable the lambda to run.
+     * @param delay the delay in milliseconds.
+     */
+    public static void runJobTimeoutAsync(Runnable runnable, int delay)
+    {
+        new Thread(() -> runJobTimeout(runnable, delay)).start();
+    }
+
+    /**
+     * Run a lambda synchronously with delay
+     * @param runnable the lambda to run.
+     * @param delay the delay in milliseconds.
+     */
+    public static void runJobTimeout(Runnable runnable, int delay)
+    {
+        try
+        {
+            Thread.sleep(delay);
+            runnable.run();
+        }
+        catch (Exception e)
+        {
+            e.printStackTrace();
+        }
     }
 }
