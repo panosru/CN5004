@@ -7,6 +7,7 @@ import javafx.scene.Node;
 import javafx.scene.control.Button;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.VBox;
+import org.jetbrains.annotations.NotNull;
 
 import java.io.IOException;
 
@@ -77,7 +78,7 @@ public class MainController
         loadModule("settings/index");
     }
 
-    private void setActiveButton(Button button)
+    private void setActiveButton(@NotNull Button button)
     {
         mainMenu.getChildren().forEach(
             b -> b.getStyleClass().removeIf(

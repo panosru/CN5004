@@ -7,6 +7,7 @@ import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.BorderPane;
 
 import java.io.IOException;
+import java.util.Optional;
 
 public abstract class BaseController
 {
@@ -45,12 +46,10 @@ public abstract class BaseController
     {
         try
         {
-            if (moduleRoot == null && childRoot != null)
-                moduleRoot = (AnchorPane) childRoot.getParent().lookup("#moduleRoot");
-
             // Load pane
             Node node = App.loadNode(fxml);
-            moduleRoot.getChildren().setAll(node);
+            Optional.ofNullable(moduleRoot).orElse((AnchorPane) childRoot.getParent().lookup("#moduleRoot"))
+                    .getChildren().setAll(node);
         }
         catch (final IOException e)
         {
