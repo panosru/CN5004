@@ -8,7 +8,7 @@
             fx:controller="com.cn5004ap.payroll.controller.StatisticsController"
             id="master" prefHeight="800.0" prefWidth="800.0" BorderPane.alignment="CENTER">
     <children>
-        <fx:include layoutX="777.0" layoutY="4.0" source="../shared/closeBtn.fxml" />
+        <fx:include layoutX="777.0" layoutY="4.0" source="../_shared/closeBtn.fxml" />
         <Label layoutX="289.0" layoutY="332.0" text="Statistics" />
     </children>
 </AnchorPane>

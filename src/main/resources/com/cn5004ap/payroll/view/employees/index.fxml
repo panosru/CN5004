@@ -6,7 +6,12 @@
 
 <AnchorPane id="master" prefHeight="800.0" prefWidth="800.0" BorderPane.alignment="CENTER" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.cn5004ap.payroll.controller.EmployeesController">
     <children>
-        <fx:include layoutX="777.0" layoutY="4.0" source="../shared/closeBtn.fxml" />
-        <Label layoutX="289.0" layoutY="332.0" text="Employees" />
+        <fx:include layoutX="777.0" layoutY="4.0" source="../_shared/closeBtn.fxml" />
+      <Label layoutX="285.0" layoutY="20.0" text="Label" />
+      <AnchorPane fx:id="moduleRoot" layoutX="14.0" layoutY="102.0" prefHeight="682.0" prefWidth="772.0">
+         <children>
+             <fx:include source="page1.fxml" />
+         </children>
+      </AnchorPane>
     </children>
 </AnchorPane>
