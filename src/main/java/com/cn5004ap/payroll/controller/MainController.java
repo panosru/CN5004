@@ -14,9 +14,6 @@ public class MainController
     extends BaseController
 {
     @FXML
-    BorderPane rootPane;
-
-    @FXML
     VBox mainMenu;
 
     @FXML
@@ -48,51 +45,36 @@ public class MainController
         App.loadScene("login");
     }
 
-    private void loadPane(String fxml)
-    {
-        // Remove existing right content
-        rootPane.getChildren().remove(rootPane.getRight());
 
-        try
-        {
-            // Load pane
-            Node node = App.loadNode(String.format("main/%s", fxml));
-            rootPane.setRight(node);
-        }
-        catch (final IOException e)
-        {
-            e.printStackTrace();
-        }
-    }
 
     public void loadEmployees(ActionEvent actionEvent)
     {
         setActiveButton(employeesBtn);
-        loadPane("employees");
+        loadModule("employees/index");
     }
 
     public void loadPayments(ActionEvent actionEvent)
     {
         setActiveButton(paymentsBtn);
-        loadPane("payments");
+        loadModule("payments/index");
     }
 
     public void loadStatistics(ActionEvent actionEvent)
     {
         setActiveButton(statisticsBtn);
-        loadPane("statistics");
+        loadModule("statistics/index");
     }
 
     public void loadProfile(ActionEvent actionEvent)
     {
         setActiveButton(profileBtn);
-        loadPane("profile");
+        loadModule("profile/index");
     }
 
     public void loadSettings(ActionEvent actionEvent)
     {
         setActiveButton(settingsBtn);
-        loadPane("settings");
+        loadModule("settings/index");
     }
 
     private void setActiveButton(Button button)
