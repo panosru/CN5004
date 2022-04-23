@@ -2,7 +2,6 @@ package com.cn5004ap.payroll.controller;
 
 import com.cn5004ap.payroll.App;
 import javafx.application.Platform;
-import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 
@@ -11,7 +10,7 @@ public class CloseController
     @FXML
     protected Button closeBtn;
 
-    public void closeApp(ActionEvent actionEvent)
+    public void closeApp()
     {
         //TODO: Check for remember me functionality, otherwise logout
         App.getStage().close(); // close the application

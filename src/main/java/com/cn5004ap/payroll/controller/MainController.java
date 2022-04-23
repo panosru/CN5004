@@ -1,11 +1,8 @@
 package com.cn5004ap.payroll.controller;
 
 import com.cn5004ap.payroll.App;
-import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.scene.Node;
 import javafx.scene.control.Button;
-import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.VBox;
 import org.jetbrains.annotations.NotNull;
 
@@ -15,32 +12,32 @@ public class MainController
     extends BaseController
 {
     @FXML
-    VBox mainMenu;
+    private VBox mainMenu;
 
     @FXML
-    Button employeesBtn;
+    private Button employeesBtn;
 
     @FXML
-    Button paymentsBtn;
+    private Button paymentsBtn;
 
     @FXML
-    Button statisticsBtn;
+    private Button statisticsBtn;
 
     @FXML
-    Button profileBtn;
+    private Button profileBtn;
 
     @FXML
-    Button settingsBtn;
+    private Button settingsBtn;
 
     @Override
     public void initialize()
     {
-        loadEmployees(null);
+        loadEmployees();
 
         super.initialize();
     }
 
-    public void logout(ActionEvent event)
+    public void logout()
         throws IOException
     {
         App.loadScene("login");
@@ -48,31 +45,31 @@ public class MainController
 
 
 
-    public void loadEmployees(ActionEvent actionEvent)
+    public void loadEmployees()
     {
         setActiveButton(employeesBtn);
         loadModule("employees/index");
     }
 
-    public void loadPayments(ActionEvent actionEvent)
+    public void loadPayments()
     {
         setActiveButton(paymentsBtn);
         loadModule("payments/index");
     }
 
-    public void loadStatistics(ActionEvent actionEvent)
+    public void loadStatistics()
     {
         setActiveButton(statisticsBtn);
         loadModule("statistics/index");
     }
 
-    public void loadProfile(ActionEvent actionEvent)
+    public void loadProfile()
     {
         setActiveButton(profileBtn);
         loadModule("profile/index");
     }
 
-    public void loadSettings(ActionEvent actionEvent)
+    public void loadSettings()
     {
         setActiveButton(settingsBtn);
         loadModule("settings/index");

@@ -8,7 +8,6 @@ import io.github.palexdev.materialfx.controls.MFXButton;
 import io.github.palexdev.materialfx.controls.MFXPasswordField;
 import io.github.palexdev.materialfx.controls.MFXTextField;
 import javafx.animation.FadeTransition;
-import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.CheckBox;
 import javafx.scene.control.Label;
@@ -83,7 +82,7 @@ public class LoginController
         if (event.getCode().equals(KeyCode.ENTER))
             try
             {
-                userLogin(null);
+                userLogin();
             }
             catch (Exception e)
             {
@@ -91,7 +90,7 @@ public class LoginController
             }
     }
 
-    public void userLogin(ActionEvent event)
+    public void userLogin()
         throws IOException
     {
         loginBtn.textProperty().unbind();
