@@ -16,7 +16,7 @@
 }
 
 .list-cell:filled:selected:focused, .list-cell:filled:selected {
-    -fx-background-color: linear-gradient(#328BDB 0%, #207BCF 25%, #1973C9 75%, #0A65BF 100%);
+    -fx-background-color: -app-gradient-lightblue-blue;
     -fx-text-fill: white;
 }
 
@@ -29,7 +29,7 @@
 
 #mainMenu Button {
     -fx-background-color: transparent;
-    -fx-text-fill: #f1f1f1;
+    -fx-text-fill: -app-lighter-cream;
     -fx-padding: 30;
     -fx-alignment: center-left;
     -fx-graphic-text-gap: 30;
@@ -37,11 +37,11 @@
 
 #mainMenu Button:hover,
 #mainMenu Button.active {
-    -fx-background-color: #6144C3;
+    -fx-background-color: -app-dark-blue;
 }
 
 #mainMenu Button FontIcon {
-    -fx-fill: #f1f1f1;
+    -fx-fill: -app-lighter-cream;
     -fx-alignment: center-left;
 }
 
@@ -51,17 +51,17 @@
 }
 
 .lblPay {
-    -fx-text-fill: #f74d4d;
+    -fx-text-fill: -app-light-red;
     -fx-font-size: 52px;
 }
 
 .lblRoll {
-    -fx-text-fill: #f1f1f1;
+    -fx-text-fill: -app-lighter-cream;
     -fx-font-size: 42px;
 }
 
 .logo FontIcon {
-    -fx-fill: #f74d4d;
+    -fx-fill: -app-light-red;
     -fx-font-size: 70;
 }
 
@@ -69,13 +69,13 @@
     -fx-background-color: transparent;
     -fx-font-size: 16;
     -fx-graphic-text-gap: 10;
-    -fx-text-fill: #ccc;
+    -fx-text-fill: -app-light-cream;
     -fx-alignment: center-left;
     -fx-padding: 0;
 }
 
 #logoutBtn FontIcon {
-    -fx-fill: #ccc;
+    -fx-fill: -app-light-cream;
     -fx-font-size: 16;
 }
 

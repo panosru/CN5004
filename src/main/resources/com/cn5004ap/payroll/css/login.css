@@ -3,7 +3,7 @@ Label {
 }
 
 .textFieldPane {
-    -fx-border-color: #6647cd;
+    -fx-border-color: -app-blue;
     -fx-border-width: 0px 0px 2px 0px;
 }
 
@@ -19,13 +19,13 @@ MFXPasswordField {
 
 MFXTextField .floating-text,
 MFXPasswordField .floating-text {
-    -fx-text-fill: #999999;
+    -fx-text-fill: -app-light-dark;
     -fx-background-color: transparent;
 }
 
 MFXTextField:floating .floating-text,
 MFXPasswordField:floating .floating-text {
-    -fx-text-fill: #B2B2B2;
+    -fx-text-fill: -app-lighter-dark;
 }
 
 .lblPay {
@@ -35,20 +35,20 @@ MFXPasswordField:floating .floating-text {
 }
 
 .lblRoll {
-    -fx-text-fill: #6647cd;
+    -fx-text-fill: -app-blue;
     -fx-font-size: 42px;
     -fx-font-weight: bold;
 }
 
 #rememberMe {
     -fx-font-size: 14px;
-    -fx-text-fill: #565656;
+    -fx-text-fill: -app-dark;
     -fx-font-weight: bold;
 }
 
 #rememberMe .box {
     -fx-background-color: transparent;
-    -fx-border-color: #6647cd;
+    -fx-border-color: -app-blue;
     -fx-border-radius:3px;
 }
 
@@ -57,18 +57,18 @@ MFXPasswordField:floating .floating-text {
 }
 
 #rememberMe:selected .box {
-    -fx-background-color: #6647cd;
+    -fx-background-color: -app-blue;
 }
 
 #loginBtn {
-    -fx-background-color: #0498fe;
+    -fx-background-color: -app-light-blue;
     -fx-background-radius: 0;
-    -fx-text-fill: #fff;
+    -fx-text-fill: white;
     -fx-font-weight: 800;
     -fx-font-size: 20px;
     -fx-padding: 5px;
 }
 
 #loginBtn:hover {
-    -fx-background-color: #6647cd;
+    -fx-background-color: -app-blue;
 }

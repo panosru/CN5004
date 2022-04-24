@@ -1,0 +1,22 @@
+.mfx-table-row-cell {
+    -fx-font-size: 16;
+}
+
+.mfx-table-column {
+    -fx-font-size: 18;
+}
+
+.mfx-table-row-cell .label,
+.mfx-table-column .label,
+.mfx-paginated-table-view .default-footer .mfx-pagination .label {
+    -fx-background-color: transparent;
+}
+
+.mfx-pagination .mfx-page {
+    -fx-font-size: 14;
+}
+
+.mfx-pagination .mfx-page:selected {
+    -fx-text-fill: white;
+    -fx-background-color: -app-dark-blue !important;
+}
