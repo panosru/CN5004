@@ -18,6 +18,7 @@ module com.cn5004ap.payroll {
     opens com.cn5004ap.payroll.view to org.kordamp.ikonli.javafx;
 
     exports com.cn5004ap.payroll;
+    exports com.cn5004ap.payroll.common;
     exports com.cn5004ap.payroll.controller;
     exports com.cn5004ap.payroll.persistence;
 }

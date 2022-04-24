@@ -1,5 +1,6 @@
 package com.cn5004ap.payroll;
 
+import com.cn5004ap.payroll.common.GlobalDTO;
 import com.cn5004ap.payroll.common.Utils;
 
 import javafx.application.Application;
@@ -59,6 +60,15 @@ public class App
     {
         return Objects.requireNonNull(
             App.class.getResource(path));
+    }
+
+    public static GlobalDTO getUserData()
+    {
+        // Lazy loading
+        if (null == stage.getUserData())
+            stage.setUserData(new GlobalDTO());
+
+        return (GlobalDTO) stage.getUserData();
     }
 
     public static Stage getStage()
