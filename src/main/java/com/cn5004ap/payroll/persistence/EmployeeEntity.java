@@ -30,23 +30,23 @@ public class EmployeeEntity
     public EmployeeEntity()
     { }
 
-    public EmployeeEntity(String firtName, String lastName, String email)
+    public EmployeeEntity(String firstName, String lastName, String email)
     {
         this();
-        setFirstName(firtName);
+        setFirstName(firstName);
         setLastName(lastName);
         setEmail(email);
     }
 
     public EmployeeEntity(
-        String firtName,
+        String firstName,
         String lastName,
         String email,
         String department,
         String title,
         double salary)
     {
-        this(firtName, lastName, email);
+        this(firstName, lastName, email);
         setDepartment(department);
         setTitle(title);
         setSalary(salary);
@@ -57,9 +57,9 @@ public class EmployeeEntity
         return firstName;
     }
 
-    public void setFirstName(String firtName)
+    public void setFirstName(String firstName)
     {
-        this.firstName = firtName;
+        this.firstName = firstName;
     }
 
     public String getLastName()
