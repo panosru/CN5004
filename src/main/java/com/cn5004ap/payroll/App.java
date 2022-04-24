@@ -1,8 +1,10 @@
 package com.cn5004ap.payroll;
 
 import com.cn5004ap.payroll.common.GlobalDTO;
+import com.cn5004ap.payroll.common.Multiton;
 import com.cn5004ap.payroll.common.Utils;
 
+import com.cn5004ap.payroll.service.DemoDataFeederService;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
@@ -87,6 +89,7 @@ public class App
 
     public static void main(String[] args)
     {
+        Multiton.getInstance(DemoDataFeederService.class).execute();
         launch(args);
     }
 }
