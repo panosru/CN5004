@@ -1,8 +1,10 @@
 package com.cn5004ap.payroll.controller;
 
 import com.cn5004ap.payroll.App;
+import com.cn5004ap.payroll.common.Multiton;
 import com.cn5004ap.payroll.common.Utils;
 import com.cn5004ap.payroll.persistence.UserEntity;
+import com.cn5004ap.payroll.persistence.UserRepository;
 import com.cn5004ap.payroll.service.CookieService;
 import io.github.palexdev.materialfx.controls.MFXButton;
 import io.github.palexdev.materialfx.controls.MFXPasswordField;
@@ -14,6 +16,7 @@ import javafx.scene.control.Label;
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
 import javafx.util.Duration;
+import org.jetbrains.annotations.NotNull;
 
 import java.io.IOException;
 
@@ -39,11 +42,15 @@ public class LoginController
 
     private int attempts;
 
+    private final UserRepository userRepository = Multiton.getInstance(UserRepository.class);
+
+    private static final CookieService cookieService = Multiton.getInstance(CookieService.class);
+
     public static void forgetLogin()
     {
-        CookieService.getInstance().getStore().remove("username");
-        CookieService.getInstance().getStore().remove("token");
-        CookieService.getInstance().getStore().remove("rememberMe");
+        cookieService.getStore().remove("username");
+        cookieService.getStore().remove("token");
+        cookieService.getStore().remove("rememberMe");
     }
 
     @Override
@@ -125,12 +132,17 @@ public class LoginController
         }
     }
 
-    private boolean auth(String user, String pass)
+    private boolean auth(@NotNull String user, String pass)
     {
         if (user.isEmpty() || pass.isEmpty())
             throw new IllegalArgumentException("Please fill both username and password.");
 
-        if (!user.equals(UserEntity.DefaultUsername) && !Utils.verifyHash(pass, UserEntity.DefaultPasswordHash))
+        UserEntity userEntity = userRepository.getUserByUsername(user);
+
+        if (null == userEntity)
+            throw new IllegalArgumentException("Invalid credentials.");
+
+        if (!Utils.verifyHash(pass, userEntity.getPassword()))
             throw new IllegalArgumentException("Invalid credentials.");
 
         return true;
@@ -142,9 +154,9 @@ public class LoginController
         {
             String token = Utils.hashString(password.getText());
 
-            CookieService.getInstance().getStore().put("username", username.getText());
-            CookieService.getInstance().getStore().put("token", token);
-            CookieService.getInstance().getStore().putBoolean("rememberMe", true);
+            cookieService.getStore().put("username", username.getText());
+            cookieService.getStore().put("token", token);
+            cookieService.getStore().putBoolean("rememberMe", true);
         }
     }
 }

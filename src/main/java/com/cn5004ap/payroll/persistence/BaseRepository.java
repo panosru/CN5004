@@ -1,5 +1,6 @@
 package com.cn5004ap.payroll.persistence;
 
+import com.cn5004ap.payroll.common.ISingleton;
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.EntityManagerFactory;
 import jakarta.persistence.EntityTransaction;
@@ -16,6 +17,7 @@ import java.util.List;
 import java.util.UUID;
 
 public abstract class BaseRepository<T extends BaseEntity>
+    implements ISingleton
 {
     private final EntityManagerFactory emf = Persistence.createEntityManagerFactory("persistence");
 
