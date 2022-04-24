@@ -1,5 +1,6 @@
 package com.cn5004ap.payroll.persistence;
 
+import com.cn5004ap.payroll.common.Utils;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Table;
@@ -27,19 +28,22 @@ public class UserEntity
     @Column(name = "token")
     private String token;
 
-    public static final String DefaultUsername = "admin";
-
-    // Password: 1234
-    public static final String DefaultPasswordHash = "$2a$12$jA2ix77kDR8uprMxMN98NO6lEY1YZo1MOfLVUe2V1jzT8R61Rpin2";
-
     public UserEntity()
     { }
 
     public UserEntity(String firstName, String lastName, String email)
     {
+        this();
         setFirstName(firstName);
         setLastName(lastName);
         setEmail(email);
+    }
+
+    public UserEntity(String firstName, String lastName, String email, String username, String password)
+    {
+        this(firstName, lastName, email);
+        setUsername(username);
+        setPassword(password);
     }
 
     public String getFirstName()
@@ -89,7 +93,7 @@ public class UserEntity
 
     public void setPassword(String password)
     {
-        this.password = password;
+        this.password = Utils.hashString(password);
     }
 
     public String getToken()
