@@ -4,6 +4,9 @@ import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Table;
 
+import java.text.NumberFormat;
+import java.util.Locale;
+
 @Entity
 @Table(name = "employees")
 public class EmployeeEntity
@@ -105,6 +108,13 @@ public class EmployeeEntity
     public double getSalary()
     {
         return salary;
+    }
+
+    public String getSalaryPretty()
+    {
+        NumberFormat formatter = NumberFormat.getCurrencyInstance(Locale.GERMANY);
+        formatter.setMaximumFractionDigits(0);
+        return formatter.format(getSalary());
     }
 
     public void setSalary(double salary)
