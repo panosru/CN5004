@@ -1,12 +1,11 @@
 package com.cn5004ap.payroll.controller;
 
 import com.cn5004ap.payroll.App;
+import com.cn5004ap.payroll.common.ModalFactory;
 import javafx.fxml.FXML;
 import javafx.scene.Node;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.BorderPane;
-
-import java.io.IOException;
 
 public abstract class BaseController
 {
@@ -22,6 +21,7 @@ public abstract class BaseController
     public void initialize()
     {
         App.enableDrag(rootPane);
+        ModalFactory.setOwner(rootPane);
     }
 
     protected void loadComponent(String fxml)
