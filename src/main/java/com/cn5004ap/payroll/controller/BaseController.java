@@ -7,7 +7,6 @@ import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.BorderPane;
 
 import java.io.IOException;
-import java.util.Optional;
 
 public abstract class BaseController
 {
@@ -30,30 +29,18 @@ public abstract class BaseController
         // Remove existing right content
         rootPane.getChildren().remove(rootPane.getRight());
 
-        try
-        {
-            // Load pane
-            Node node = App.loadNode(fxml);
-            rootPane.setRight(node);
-        }
-        catch (final IOException e)
-        {
-            e.printStackTrace();
-        }
+        // Load pane
+        Node node = App.loadNode(fxml);
+        rootPane.setRight(node);
     }
 
     protected void loadModulePane(String fxml)
     {
-        try
-        {
-            // Load pane
-            Node node = App.loadNode(fxml);
-            Optional.ofNullable(moduleRoot).orElse((AnchorPane) childRoot.getParent().lookup("#moduleRoot"))
-                    .getChildren().setAll(node);
-        }
-        catch (final IOException e)
-        {
-            e.printStackTrace();
-        }
+        // Load pane
+        Node node = App.loadNode(fxml);
+        if (null == moduleRoot)
+            moduleRoot = (AnchorPane) childRoot.getParent();
+
+        moduleRoot.getChildren().setAll(node);
     }
 }

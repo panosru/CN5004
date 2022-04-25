@@ -45,17 +45,22 @@ public class App
         stage.show();
     }
 
-    public static Node loadNode(String fxml)
-        throws IOException
-    {
-        return FXMLLoader.load(getResource(String.format("view/%s.fxml", fxml)));
-    }
-
     public static void loadScene(String fxml)
-        throws IOException
     {
         Parent pane = (Parent) loadNode(fxml);
         getStage().setScene(new Scene(pane));
+    }
+
+    public static Node loadNode(String fxml)
+    {
+        try
+        {
+            return FXMLLoader.load(getResource(String.format("view/%s.fxml", fxml)));
+        }
+        catch (IOException e)
+        {
+            throw new RuntimeException(e);
+        }
     }
 
     public static URL getResource(String path)
