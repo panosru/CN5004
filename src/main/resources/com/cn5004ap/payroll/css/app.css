@@ -22,11 +22,16 @@
 
 .CloseBtn {
     -fx-background-color: transparent;
+    -fx-opacity: 0.5;
 }
 
 .CloseBtn FontIcon {
     -fx-fill: -app-blue;
     -fx-font-size: 18;
+}
+
+.CloseBtn:hover {
+    -fx-opacity: 1;
 }
 
 .CloseBtn:hover FontIcon {
