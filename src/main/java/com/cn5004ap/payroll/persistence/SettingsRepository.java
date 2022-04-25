@@ -1,7 +1,5 @@
 package com.cn5004ap.payroll.persistence;
 
-import com.cn5004ap.payroll.common.ISingleton;
-
 public class SettingsRepository
     extends BaseRepository<SettingsEntity>
 {

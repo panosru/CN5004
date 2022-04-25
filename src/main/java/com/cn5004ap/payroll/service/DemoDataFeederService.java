@@ -5,6 +5,8 @@ import com.cn5004ap.payroll.common.ISingleton;
 import com.cn5004ap.payroll.common.Multiton;
 import com.cn5004ap.payroll.persistence.EmployeeEntity;
 import com.cn5004ap.payroll.persistence.EmployeeRepository;
+import com.cn5004ap.payroll.persistence.SettingsEntity;
+import com.cn5004ap.payroll.persistence.SettingsRepository;
 import com.cn5004ap.payroll.persistence.UserEntity;
 import com.cn5004ap.payroll.persistence.UserRepository;
 import org.json.simple.JSONArray;
@@ -22,6 +24,8 @@ public class DemoDataFeederService
 
     private final UserRepository userRepository;
 
+    private final SettingsRepository settingsRepository;
+
     private boolean executed = false;
 
     private DemoDataFeederService()
@@ -30,16 +34,23 @@ public class DemoDataFeederService
         // Get repositories
         employeeRepository = Multiton.getInstance(EmployeeRepository.class);
         userRepository = Multiton.getInstance(UserRepository.class);
+        settingsRepository = Multiton.getInstance(SettingsRepository.class);
     }
 
     public void execute()
     {
+        SettingsEntity setting = settingsRepository.getSettingByKey("sampleDataLoaded");
+
+        if (null != setting)
+            executed = Boolean.parseBoolean(setting.getValue());
+
         try
         {
             if (!executed)
             {
                 feedUsers();
                 feedEmployees();
+                feedSettings();
             }
         }
         catch (Exception e)
@@ -48,8 +59,20 @@ public class DemoDataFeederService
         }
         finally
         {
-            executed = true;
+            if (!executed)
+            {
+                if (null == setting)
+                    setting = settingsRepository.getSettingByKey("sampleDataLoaded");
+                executed = true;
+                setting.setValue(String.valueOf(executed));
+                settingsRepository.save(setting);
+            }
         }
+    }
+
+    public boolean sampleDataLoaded()
+    {
+        return executed;
     }
 
     private void feedUsers()
@@ -85,6 +108,21 @@ public class DemoDataFeederService
                 (String) jsonObject.get("department"),
                 (String) jsonObject.get("title"),
                 ((Long)jsonObject.get("salary")).doubleValue()
+            ));
+        }
+    }
+
+    private void feedSettings()
+    {
+        JSONArray jsonArray = readFromJSON("settings");
+
+        for (Object o : jsonArray)
+        {
+            JSONObject jsonObject = (JSONObject) o;
+
+            settingsRepository.save(new SettingsEntity(
+                (String) jsonObject.get("key"),
+                String.valueOf(jsonObject.get("value"))
             ));
         }
     }
