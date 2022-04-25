@@ -48,31 +48,31 @@ public class MainController
     public void loadEmployees()
     {
         setActiveButton(employeesBtn);
-        loadModule("employees/index");
+        loadComponent("employees/index");
     }
 
     public void loadPayments()
     {
         setActiveButton(paymentsBtn);
-        loadModule("payments/index");
+        loadComponent("payments/index");
     }
 
     public void loadStatistics()
     {
         setActiveButton(statisticsBtn);
-        loadModule("statistics/index");
+        loadComponent("statistics/index");
     }
 
     public void loadProfile()
     {
         setActiveButton(profileBtn);
-        loadModule("profile/index");
+        loadComponent("profile/index");
     }
 
     public void loadSettings()
     {
         setActiveButton(settingsBtn);
-        loadModule("settings/index");
+        loadComponent("settings/index");
     }
 
     private void setActiveButton(@NotNull Button button)

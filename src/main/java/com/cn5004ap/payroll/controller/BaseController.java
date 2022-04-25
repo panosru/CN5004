@@ -24,7 +24,7 @@ public abstract class BaseController
         App.enableDrag(rootPane);
     }
 
-    protected void loadModule(String fxml)
+    protected void loadComponent(String fxml)
     {
         // Remove existing right content
         rootPane.getChildren().remove(rootPane.getRight());
@@ -34,7 +34,7 @@ public abstract class BaseController
         rootPane.setRight(node);
     }
 
-    protected void loadModulePane(String fxml)
+    protected void loadModule(String fxml)
     {
         // Load pane
         Node node = App.loadNode(fxml);
