@@ -9,16 +9,13 @@ import io.github.palexdev.materialfx.enums.ScrimPriority;
 import io.github.palexdev.materialfx.font.FontResources;
 import io.github.palexdev.materialfx.font.MFXFontIcon;
 import javafx.event.EventHandler;
-import javafx.event.EventType;
 import javafx.scene.Node;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.Pane;
 import javafx.stage.Modality;
 import javafx.util.Pair;
 import org.jetbrains.annotations.NotNull;
-
 import java.util.Map;
-import java.util.function.Function;
 
 public class ModalFactory
 {
@@ -27,6 +24,7 @@ public class ModalFactory
     private ModalFactory()
     { }
 
+    @SafeVarargs
     public static @NotNull Modal create(
         @NotNull Type type,
         String title,
@@ -49,6 +47,7 @@ public class ModalFactory
     private static class SimpleModal
         extends Modal
     {
+        @SafeVarargs
         public SimpleModal(
             String title,
             String content,
@@ -77,6 +76,7 @@ public class ModalFactory
     private static class FXMLModal
         extends Modal
     {
+        @SafeVarargs
         public FXMLModal(
             String title,
             String fxml,
@@ -142,7 +142,8 @@ public class ModalFactory
             dialogContent.setContentText(content);
         }
 
-        public void setActions(Map.Entry<Node, EventHandler<MouseEvent>>... actions)
+        @SafeVarargs
+        public final void setActions(Map.Entry<Node, EventHandler<MouseEvent>>... actions)
         {
             dialogContent.clearActions();
             dialogContent.addActions(actions);

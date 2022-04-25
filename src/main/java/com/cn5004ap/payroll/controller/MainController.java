@@ -6,8 +6,6 @@ import javafx.scene.control.Button;
 import javafx.scene.layout.VBox;
 import org.jetbrains.annotations.NotNull;
 
-import java.io.IOException;
-
 public class MainController
     extends BaseController
 {
@@ -32,18 +30,14 @@ public class MainController
     @Override
     public void initialize()
     {
-        loadEmployees();
-
         super.initialize();
+        loadEmployees();
     }
 
     public void logout()
-        throws IOException
     {
         App.loadScene("login");
     }
-
-
 
     public void loadEmployees()
     {

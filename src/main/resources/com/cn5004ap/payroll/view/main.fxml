@@ -9,7 +9,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import org.kordamp.ikonli.javafx.FontIcon?>
 
-<BorderPane id="LoginContainer" fx:id="rootPane" prefHeight="800.0" prefWidth="1100.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.cn5004ap.payroll.controller.MainController">
+<BorderPane id="MainContainer" fx:id="rootPane" prefHeight="800.0" prefWidth="1100.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.cn5004ap.payroll.controller.MainController">
    <stylesheets>
       <URL value="@../css/main.css" />
       <URL value="@../css/app.css" />
@@ -56,7 +56,8 @@
             <Button fx:id="logoutBtn" layoutX="21.0" layoutY="766.0" mnemonicParsing="false" onAction="#logout" text="Sign Out">
                <graphic>
                   <FontIcon iconLiteral="fas-sign-out-alt" />
-               </graphic></Button>
+               </graphic>
+            </Button>
          </children>
       </AnchorPane>
    </left>
