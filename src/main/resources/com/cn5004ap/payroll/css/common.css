@@ -1,0 +1,12 @@
+* {
+    -app-blue: #6647cd;
+    -app-dark-blue: #6144C3;
+    -app-light-blue: #0498fe;
+    -app-dark: #565656;
+    -app-light-dark: #999;
+    -app-lighter-dark: #b2b2b2;
+    -app-light-cream: #ccc;
+    -app-lighter-cream: #f1f1f1;
+    -app-light-red: #f74d4d;
+    -app-gradient-lightblue-blue: linear-gradient(#328BDB 0%, #207BCF 25%, #1973C9 75%, #0A65BF 100%);
+}
