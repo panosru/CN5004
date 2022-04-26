@@ -1,27 +1,27 @@
 @import "common.css";
 
 #master {
-    -fx-background-color: #f1f1f1;
+    -fx-background-color: -app-lighter-cream;
 }
 
 #sidebar {
     -fx-background-color: -app-blue;
 }
 
-.CloseBtn {
+#closeBtn {
     -fx-background-color: transparent;
     -fx-opacity: 0.5;
 }
 
-.CloseBtn FontIcon {
+#closeBtn FontIcon {
     -fx-fill: -app-blue;
     -fx-font-size: 18;
 }
 
-.CloseBtn:hover {
+#closeBtn:hover {
     -fx-opacity: 1;
 }
 
-.CloseBtn:hover FontIcon {
+#closeBtn:hover FontIcon {
     -fx-fill: red;
 }
