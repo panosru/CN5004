@@ -5,6 +5,8 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.Table;
 
 import java.text.NumberFormat;
+import java.util.Arrays;
+import java.util.Collections;
 import java.util.Locale;
 
 @Entity
@@ -73,6 +75,21 @@ public class EmployeeEntity
     public void setLastName(String lastName)
     {
         this.lastName = lastName;
+    }
+
+    public String getFullName(boolean reverse)
+    {
+        String[] fullName = {getFirstName(), getLastName()};
+
+        if (reverse)
+            Collections.reverse(Arrays.asList(fullName));
+
+        return String.join(" ", fullName);
+    }
+
+    public String getFullName()
+    {
+        return getFullName(false);
     }
 
     public String getEmail()
