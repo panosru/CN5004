@@ -1,0 +1,9 @@
+@import "../common.css";
+
+#topMenu MFXButton.employee-terminate:hover {
+    -fx-background-color: -app-light-red;
+}
+
+#topMenu MFXButton.employee-activate:hover {
+    -fx-background-color: -app-light-green;
+}

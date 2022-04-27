@@ -8,5 +8,7 @@
     -app-light-cream: #ccc;
     -app-lighter-cream: #f1f1f1;
     -app-light-red: #f74d4d;
+    -app-light-green: #f7c44d;
     -app-gradient-lightblue-blue: linear-gradient(#328BDB 0%, #207BCF 25%, #1973C9 75%, #0A65BF 100%);
+    -app-gradient-birthday: linear-gradient(#fbf101 0%, #3387d3 30%, #6b6833 75%, #962040 100%);
 }

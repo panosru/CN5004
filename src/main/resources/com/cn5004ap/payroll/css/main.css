@@ -86,3 +86,26 @@
 #logoutBtn:hover FontIcon {
     -fx-fill: white;
 }
+
+MFXButton.menu {
+    -fx-background-color: white;
+    -fx-text-fill: -app-dark;
+    -fx-padding: 15;
+    -fx-alignment: center-left;
+    -fx-graphic-text-gap: 10;
+    -fx-wrap-text: true;
+}
+
+MFXButton.menu:hover {
+    -fx-background-color: -app-light-blue;
+    -fx-text-fill: white;
+}
+
+MFXButton.menu FontIcon {
+    -fx-fill: -app-dark;
+    -fx-alignment: center-left;
+}
+
+MFXButton.menu:hover FontIcon {
+    -fx-fill: white;
+}

@@ -1,0 +1,65 @@
+.tab-pane .tab-header-area {
+    -fx-padding: 0 0 0 50;
+}
+
+.tab-pane .tab-header-area {
+}
+
+.tab-pane .tab {
+    -fx-pref-height: 40;
+    -fx-font-size: 16;
+}
+
+#back {
+    -fx-background-color: transparent;
+    -fx-background-radius: 0;
+    -fx-pref-width: 50;
+}
+
+#back:hover {
+    -fx-background-color: -app-light-blue;
+}
+
+#fullName {
+    -fx-font-family: "Arial";
+    -fx-font-size: 30;
+    -fx-font-weight: bold;
+    -fx-background-color: transparent;
+}
+
+#status,
+#birthday {
+    -fx-font-size: 30;
+}
+
+#birthday {
+    -fx-fill: -app-gradient-birthday;
+}
+
+#status.active {
+    -fx-fill: -app-light-green;
+}
+
+#status.terminated {
+    -fx-fill: -app-light-red;
+}
+
+.info-pane {
+    -fx-background-color: white;
+}
+
+.vbox-labels Label,
+.vbox-data Label,
+.vbox-data Hyperlink {
+    -fx-background-color: transparent;
+    -fx-font-family: "Arial";
+    -fx-font-size: 15;
+}
+
+.vbox-labels Label {
+    -fx-font-weight: bold;
+}
+
+.vbox-data {
+    -fx-padding: 0 0 0 10;
+}

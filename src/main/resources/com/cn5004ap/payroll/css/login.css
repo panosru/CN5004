@@ -51,7 +51,7 @@ MFXPasswordField:floating .floating-text {
 #rememberMe .box {
     -fx-background-color: transparent;
     -fx-border-color: -app-blue;
-    -fx-border-radius:3px;
+    -fx-border-radius: 3px;
 }
 
 #rememberMe:selected .mark {
