@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import io.github.palexdev.materialfx.controls.MFXButton?>
+<?import io.github.palexdev.materialfx.controls.MFXPaginatedTableView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import org.kordamp.ikonli.javafx.FontIcon?>
+<?import java.lang.String?>
+<?import java.net.URL?>
+<AnchorPane xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/18"
+            fx:id="childRoot" prefHeight="800" prefWidth="800"
+            fx:controller="com.cn5004ap.payroll.controller.employees.ListController">
+    <stylesheets>
+        <URL value="@../../css/employees/list.css"/>
+        <URL value="@../../css/table.css"/>
+    </stylesheets>
+    <children>
+        <HBox id="topMenu" prefHeight="50.0" prefWidth="712.0" spacing="10.0" layoutX="14.0" layoutY="15">
+            <children>
+                <MFXButton fx:id="showBtn" onAction="#show" text="Show" disable="true">
+                    <graphic>
+                        <FontIcon iconLiteral="fas-user-tie"/>
+                    </graphic>
+                    <styleClass>
+                        <String fx:value="employee-show"/>
+                        <String fx:value="menu"/>
+                    </styleClass>
+                </MFXButton>
+                <MFXButton fx:id="hireBtn" onAction="#hire" text="Hire">
+                    <graphic>
+                        <FontIcon iconLiteral="fas-user-plus"/>
+                    </graphic>
+                    <styleClass>
+                        <String fx:value="employee-hire"/>
+                        <String fx:value="menu"/>
+                    </styleClass>
+                </MFXButton>
+                <MFXButton fx:id="updateBtn" onAction="#update" text="Update" disable="true">
+                    <graphic>
+                        <FontIcon iconLiteral="fas-user-edit"/>
+                    </graphic>
+                    <styleClass>
+                        <String fx:value="employee-update"/>
+                        <String fx:value="menu"/>
+                    </styleClass>
+                </MFXButton>
+                <MFXButton fx:id="terminateBtn" onAction="#terminate" text="Terminate" disable="true" visible="false"
+                           managed="false">
+                    <graphic>
+                        <FontIcon iconLiteral="fas-user-alt-slash"/>
+                    </graphic>
+                    <styleClass>
+                        <String fx:value="employee-terminate"/>
+                        <String fx:value="menu"/>
+                    </styleClass>
+                </MFXButton>
+                <MFXButton fx:id="activateBtn" onAction="#activate" text="Activate" disable="true" visible="false"
+                           managed="false">
+                    <graphic>
+                        <FontIcon iconLiteral="fas-user-check"/>
+                    </graphic>
+                    <styleClass>
+                        <String fx:value="employee-activate"/>
+                        <String fx:value="menu"/>
+                    </styleClass>
+                </MFXButton>
+            </children>
+        </HBox>
+        <MFXPaginatedTableView fx:id="table" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity"
+                               prefHeight="700.0" prefWidth="772.0" layoutX="14.0" layoutY="85"/>
+    </children>
+</AnchorPane>

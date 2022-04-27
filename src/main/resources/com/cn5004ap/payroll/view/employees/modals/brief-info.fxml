@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import io.github.palexdev.materialfx.dialogs.MFXGenericDialog?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+<?import java.net.URL?>
+<MFXGenericDialog maxHeight="100" maxWidth="200" prefHeight="100.0" prefWidth="200.0"
+                  xmlns="http://javafx.com/javafx/18">
+    <stylesheets>
+        <URL value="@../../../css/modal.css"/>
+    </stylesheets>
+    <left>
+        <VBox alignment="CENTER_RIGHT" prefHeight="154.0" prefWidth="142.0" spacing="10.0"
+              BorderPane.alignment="CENTER">
+            <children>
+                <Label text="Name:">
+                    <font>
+                        <Font name="Arial Bold" size="13.0"/>
+                    </font>
+                </Label>
+                <Label text="Surname:">
+                    <font>
+                        <Font name="Arial Bold" size="13.0"/>
+                    </font>
+                </Label>
+                <Label text="Department:">
+                    <font>
+                        <Font name="Arial Bold" size="13.0"/>
+                    </font>
+                </Label>
+                <Label text="Title:">
+                    <font>
+                        <Font name="Arial Bold" size="13.0"/>
+                    </font>
+                </Label>
+            </children>
+        </VBox>
+    </left>
+    <center>
+        <VBox alignment="CENTER_LEFT" prefHeight="200.0" prefWidth="100.0" spacing="10.0" BorderPane.alignment="CENTER">
+            <children>
+                <Label id="name"/>
+                <Label id="surname"/>
+                <Label id="department"/>
+                <Label id="title"/>
+            </children>
+            <padding>
+                <Insets left="10.0"/>
+            </padding>
+        </VBox>
+    </center>
+</MFXGenericDialog>

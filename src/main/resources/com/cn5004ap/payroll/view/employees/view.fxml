@@ -1,0 +1,129 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import io.github.palexdev.materialfx.controls.MFXButton?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Hyperlink?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Tab?>
+<?import javafx.scene.control.TabPane?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.VBox?>
+<?import org.kordamp.ikonli.javafx.FontIcon?>
+<?import java.net.URL?>
+<AnchorPane xmlns:fx="http://javafx.com/fxml/1" fx:id="childRoot" prefHeight="800.0" prefWidth="800.0"
+            xmlns="http://javafx.com/javafx/18"
+            fx:controller="com.cn5004ap.payroll.controller.employees.ViewController">
+    <stylesheets>
+        <URL value="@../../css/employees/view.css"/>
+    </stylesheets>
+    <children>
+        <TabPane layoutY="-2.0" prefHeight="800.0" prefWidth="800.0" tabClosingPolicy="UNAVAILABLE">
+            <tabs>
+                <Tab text="Details">
+                    <content>
+                        <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                            <children>
+                                <Label fx:id="fullName" layoutX="14.0" layoutY="14.0" text="Label"/>
+                                <FontIcon fx:id="status" layoutX="732.0" layoutY="43.0"/>
+                                <FontIcon fx:id="birthday" iconLiteral="fas-birthday-cake" layoutX="689.0"
+                                          layoutY="42.0"/>
+                                <Pane layoutX="14.0" layoutY="62.0" prefHeight="146.0" prefWidth="776.0"
+                                      styleClass="info-pane">
+                                    <children>
+                                        <VBox alignment="CENTER_RIGHT" prefHeight="146.0" prefWidth="178.0"
+                                              spacing="20.0" styleClass="vbox-labels">
+                                            <children>
+                                                <Label text="Department:"/>
+                                                <Label text="Title:"/>
+                                                <Label text="Employment Date:"/>
+                                                <Label text="Termination Date"/>
+                                            </children>
+                                        </VBox>
+                                        <VBox alignment="CENTER_LEFT" layoutX="178.0" prefHeight="146.0"
+                                              prefWidth="598.0" spacing="20.0" styleClass="vbox-data">
+                                            <children>
+                                                <Label fx:id="department" text="Label"/>
+                                                <Label fx:id="title" text="Label"/>
+                                                <Label fx:id="employment_date" text="Label"/>
+                                                <Label fx:id="termination_date" text="Label"/>
+                                            </children>
+                                        </VBox>
+                                    </children>
+                                </Pane>
+                                <Pane layoutX="14.0" layoutY="230.0" prefHeight="221.0" prefWidth="776.0"
+                                      styleClass="info-pane">
+                                    <children>
+                                        <VBox alignment="CENTER_RIGHT" prefHeight="221.0" prefWidth="178.0"
+                                              spacing="20.0" styleClass="vbox-labels">
+                                            <children>
+                                                <Label text="SSN:"/>
+                                                <Label text="Email:"/>
+                                                <Label text="Address:"/>
+                                                <Label text="Phone:"/>
+                                                <Label text="Birth Date:"/>
+                                                <Label text="Gender:"/>
+                                            </children>
+                                        </VBox>
+                                        <VBox alignment="CENTER_LEFT" layoutX="178.0" prefHeight="221.0"
+                                              prefWidth="598.0" spacing="15.0" styleClass="vbox-data">
+                                            <children>
+                                                <Label fx:id="ssn" text="Label"/>
+                                                <Hyperlink fx:id="email" onAction="#sendEmail"/>
+                                                <Hyperlink fx:id="address" onAction="#openMap"/>
+                                                <Hyperlink fx:id="phone" onAction="#callNumber"/>
+                                                <Label fx:id="birth_date" text="Label"/>
+                                                <Label fx:id="gender" text="Label"/>
+                                            </children>
+                                        </VBox>
+                                    </children>
+                                </Pane>
+                                <Pane layoutX="14.0" layoutY="472.0" prefHeight="177.0" prefWidth="776.0"
+                                      styleClass="info-pane">
+                                    <children>
+                                        <VBox alignment="CENTER_RIGHT" prefHeight="177.0" prefWidth="178.0"
+                                              spacing="20.0" styleClass="vbox-labels">
+                                            <children>
+                                                <Label text="Gross Salary:"/>
+                                                <Label text="Insurance:"/>
+                                                <Label text="Tax:"/>
+                                                <Label text="Net Salary:"/>
+                                                <Label text="IBAN:"/>
+                                            </children>
+                                        </VBox>
+                                        <VBox alignment="CENTER_LEFT" layoutX="178.0" prefHeight="177.0"
+                                              prefWidth="598.0" spacing="20.0" styleClass="vbox-data">
+                                            <children>
+                                                <Label fx:id="gross_salary" text="Label"/>
+                                                <Label fx:id="insurance" text="Label"/>
+                                                <Label fx:id="tax_expense" text="Label"/>
+                                                <Label fx:id="net_salary" text="Label"/>
+                                                <Label fx:id="iban" text="Label"/>
+                                            </children>
+                                        </VBox>
+                                    </children>
+                                </Pane>
+                                <MFXButton fx:id="update" layoutX="359.0" layoutY="682.0" onAction="#update"
+                                           styleClass="menu" text="Update">
+                                    <graphic>
+                                        <FontIcon iconLiteral="fas-user-edit"/>
+                                    </graphic>
+                                </MFXButton>
+                            </children>
+                        </AnchorPane>
+                    </content>
+                </Tab>
+                <Tab text="Payments">
+                    <content>
+                        <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0"/>
+                    </content>
+                </Tab>
+            </tabs>
+        </TabPane>
+        <Button id="back" layoutY="-1.0" mnemonicParsing="false" onAction="#list">
+            <graphic>
+                <FontIcon iconLiteral="fas-arrow-left"/>
+            </graphic>
+        </Button>
+    </children>
+</AnchorPane>

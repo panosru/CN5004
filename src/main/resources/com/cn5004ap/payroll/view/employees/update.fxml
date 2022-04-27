@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import io.github.palexdev.materialfx.controls.MFXButton?>
+<?import java.net.URL?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<AnchorPane fx:id="childRoot" prefHeight="800.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.cn5004ap.payroll.controller.employees.UpdateController">
+    <stylesheets>
+        <URL value="@../../css/employees/update.css" />
+    </stylesheets>
+   <children>
+      <MFXButton layoutX="182.0" layoutY="363.0" onAction="#read" text="Read" />
+      <MFXButton layoutX="420.0" layoutY="363.0" onAction="#list" text="List" />
+   </children>
+</AnchorPane>
