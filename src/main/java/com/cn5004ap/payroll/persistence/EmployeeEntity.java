@@ -1,5 +1,6 @@
 package com.cn5004ap.payroll.persistence;
 
+import com.cn5004ap.payroll.controller.SettingsController;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Table;
@@ -7,6 +8,7 @@ import jakarta.persistence.Table;
 import java.text.NumberFormat;
 import java.util.Arrays;
 import java.util.Collections;
+import java.util.Date;
 import java.util.Locale;
 
 @Entity
@@ -23,6 +25,24 @@ public class EmployeeEntity
     @Column(name = "email")
     private String email;
 
+    @Column(name = "address")
+    private String address;
+
+    @Column(name = "phone")
+    private String phone;
+
+    @Column(name = "birth_date")
+    private Date birthDate;
+
+    @Column(name = "gender")
+    private String gender;
+
+    @Column(name = "iban")
+    private String iban;
+
+    @Column(name = "ssn")
+    private String ssn;
+
     @Column(name = "department")
     private String department;
 
@@ -30,10 +50,22 @@ public class EmployeeEntity
     private String title;
 
     @Column(name = "salary")
-    private double salary;
+    private double grossSalary;
+
+    @Column(name = "active")
+    private boolean active;
+
+    @Column(name = "employment_date")
+    private Date employmentDate;
+
+    @Column(name = "termination_date")
+    private Date terminationDate;
+
+    @Column(name = "last_updated")
+    private Date lastUpdated;
 
     public EmployeeEntity()
-    { }
+    {}
 
     public EmployeeEntity(String firstName, String lastName, String email)
     {
@@ -54,7 +86,49 @@ public class EmployeeEntity
         this(firstName, lastName, email);
         setDepartment(department);
         setTitle(title);
-        setSalary(salary);
+        setGrossSalary(salary);
+    }
+
+    public EmployeeEntity(
+        String firstName,
+        String lastName,
+        String email,
+        Date birthDate,
+        String gender,
+        String department,
+        String title,
+        double salary)
+    {
+        this(firstName, lastName, email, department, title, salary);
+        setBirthDate(birthDate);
+        setGender(gender);
+    }
+
+    public EmployeeEntity(
+        String firstName,
+        String lastName,
+        String email,
+        String address,
+        String phone,
+        Date birthDate,
+        String gender,
+        String iban,
+        String ssn,
+        String department,
+        String title,
+        double salary,
+        boolean active,
+        Date employmentDate,
+        Date terminationDate)
+    {
+        this(firstName, lastName, email, birthDate, gender, department, title, salary);
+        setIban(iban);
+        setSsn(ssn);
+        setAddress(address);
+        setPhone(phone);
+        setActive(active);
+        setEmploymentDate(employmentDate);
+        setTerminationDate(terminationDate);
     }
 
     public String getFirstName()
@@ -75,6 +149,89 @@ public class EmployeeEntity
     public void setLastName(String lastName)
     {
         this.lastName = lastName;
+    }
+
+    public Date getTerminationDate()
+    {
+        return terminationDate;
+    }
+
+    public void setTerminationDate(Date terminationDate)
+    {
+        this.terminationDate = terminationDate;
+    }
+
+    public void activate()
+    {
+        setActive(true);
+        setTerminationDate(null);
+        setEmploymentDate(new Date());
+    }
+
+    public void terminate()
+    {
+        setActive(false);
+        setTerminationDate(new Date());
+    }
+
+    public Date getLastUpdated()
+    {
+        return lastUpdated;
+    }
+
+    public void setLastUpdated(Date lastUpdated)
+    {
+        this.lastUpdated = lastUpdated;
+    }
+
+    public String getAddress()
+    {
+        return address;
+    }
+
+    public void setAddress(String address)
+    {
+        this.address = address;
+    }
+
+    public String getIban()
+    {
+        return iban;
+    }
+
+    public void setIban(String iban)
+    {
+        this.iban = iban;
+    }
+
+    public String getSsn()
+    {
+        return ssn;
+    }
+
+    public void setSsn(String ssn)
+    {
+        this.ssn = ssn;
+    }
+
+    public String getPhone()
+    {
+        return phone;
+    }
+
+    public void setPhone(String phone)
+    {
+        this.phone = phone;
+    }
+
+    public Date getEmploymentDate()
+    {
+        return employmentDate;
+    }
+
+    public void setEmploymentDate(Date employmentDate)
+    {
+        this.employmentDate = employmentDate;
     }
 
     public String getFullName(boolean reverse)
@@ -122,26 +279,99 @@ public class EmployeeEntity
         this.title = title;
     }
 
-    public double getSalary()
+    public double getGrossSalary()
     {
-        return salary;
+        return grossSalary;
     }
 
-    public String getSalaryPretty()
+    public double getInsuranceExpense()
+    {
+        return getGrossSalary() * (SettingsController.getInsurancePercent() / 100);
+    }
+
+    public double getTaxExpense()
+    {
+        return getGrossSalary() * (SettingsController.getTaxPercent() / 100);
+    }
+
+    public double getNetSalary()
+    {
+        return getGrossSalary() - getInsuranceExpense() - getTaxExpense();
+    }
+
+    public void setGrossSalary(double salary)
+    {
+        this.grossSalary = salary;
+    }
+
+    public Date getBirthDate()
+    {
+        return birthDate;
+    }
+
+    public void setBirthDate(Date birthDate)
+    {
+        this.birthDate = birthDate;
+    }
+
+    public String getGender()
+    {
+        return gender;
+    }
+
+    public void setGender(String gender)
+    {
+        this.gender = gender;
+    }
+
+    public Gender getGenderEnum()
+    {
+        return getGender().equals("F") ? Gender.FEMALE : Gender.MALE;
+    }
+
+    public boolean isActive()
+    {
+        return active;
+    }
+
+    public void setActive(boolean active)
+    {
+        this.active = active;
+    }
+
+    public Status getStatus()
+    {
+        return isActive() ? Status.ACTIVE : Status.INACTIVE;
+    }
+
+    public String getStatusUnicode()
+    {
+        return isActive() ? "\u2713" : "\u2718";
+    }
+
+    public static String salaryPrettify(double salary)
     {
         NumberFormat formatter = NumberFormat.getCurrencyInstance(Locale.GERMANY);
         formatter.setMaximumFractionDigits(0);
-        return formatter.format(getSalary());
-    }
-
-    public void setSalary(double salary)
-    {
-        this.salary = salary;
+        return formatter.format(salary);
     }
 
     @Override
     public String toString()
     {
-        return "Employee [id=" + id + ", firstName=" + firstName + ", lastName=" + lastName + ", email=" + email + ", department=" + department + ", title=" + title + ", salary=" + salary + "]";
+        return "Employee [id=" + id + ", firstName=" + firstName + ", lastName=" + lastName + ", email=" + email + ","
+            + " department=" + department + ", title=" + title + ", salary=" + grossSalary + "]";
+    }
+
+    public enum Status
+    {
+        ACTIVE,
+        INACTIVE
+    }
+
+    public enum Gender
+    {
+        MALE,
+        FEMALE
     }
 }
