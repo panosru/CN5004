@@ -7,8 +7,7 @@ public class GlobalDTO
     private EmployeeEntity selectedEmployee;
 
     public GlobalDTO()
-    {
-    }
+    { }
 
     public EmployeeEntity getSelectedEmployee()
     {
@@ -18,5 +17,10 @@ public class GlobalDTO
     public void setSelectedEmployee(EmployeeEntity selectedEmployee)
     {
         this.selectedEmployee = selectedEmployee;
+    }
+
+    public void clearSelectedEmployee()
+    {
+        setSelectedEmployee(null);
     }
 }
