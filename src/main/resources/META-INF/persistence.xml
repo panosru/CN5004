@@ -7,10 +7,10 @@
     <persistence-unit name="persistence" transaction-type="RESOURCE_LOCAL">
         <properties>
             <!-- JDBC Database connection settings -->
-            <property name="javax.persistence.jdbc.driver" value="org.h2.Driver" />
-            <property name="javax.persistence.jdbc.url"    value="jdbc:h2:./database/payroll;AUTO_SERVER=TRUE" />
-            <property name="javax.persistence.jdbc.user" value="sa" />
-            <property name="javax.persistence.jdbc.password" value="" />
+            <property name="javax.persistence.jdbc.driver" value="org.h2.Driver"/>
+            <property name="javax.persistence.jdbc.url" value="jdbc:h2:./database/payroll;AUTO_SERVER=TRUE"/>
+            <property name="javax.persistence.jdbc.user" value="sa"/>
+            <property name="javax.persistence.jdbc.password" value=""/>
 
             <!-- JDBC connection pool settings ... using built-in test pool -->
             <property name="hibernate.connection.pool_size" value="1"/>
@@ -26,7 +26,7 @@
             <property name="hibernate.current_session_context_class" value="thread"/>
 
             <!-- Drop and re-create the database schema on startup -->
-            <property name="hibernate.hbm2ddl.auto" value="update" />
+            <property name="hibernate.hbm2ddl.auto" value="create-drop"/>
             <property name="hibernate.temp.use_jdbc_metadata_defaults" value="false"/>
 
             <!-- Query Cache -->
