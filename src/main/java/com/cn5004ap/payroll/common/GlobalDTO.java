@@ -1,20 +1,22 @@
 package com.cn5004ap.payroll.common;
 
+import com.cn5004ap.payroll.persistence.EmployeeEntity;
+
 public class GlobalDTO
 {
-    private String currentEmployeeID;
+    private EmployeeEntity selectedEmployee;
 
     public GlobalDTO()
     {
     }
 
-    public String getCurrentEmployeeID()
+    public EmployeeEntity getSelectedEmployee()
     {
-        return currentEmployeeID;
+        return selectedEmployee;
     }
 
-    public void setCurrentEmployeeID(String currentEmployeeID)
+    public void setSelectedEmployee(EmployeeEntity selectedEmployee)
     {
-        this.currentEmployeeID = currentEmployeeID;
+        this.selectedEmployee = selectedEmployee;
     }
 }
