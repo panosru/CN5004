@@ -42,31 +42,31 @@ public class MainController
     public void loadEmployees()
     {
         setActiveButton(employeesBtn);
-        loadComponent("employees/index");
+        loadModule("employees/list");
     }
 
     public void loadPayments()
     {
         setActiveButton(paymentsBtn);
-        loadComponent("payments/index");
+        loadModule("payments/index");
     }
 
     public void loadStatistics()
     {
         setActiveButton(statisticsBtn);
-        loadComponent("statistics/index");
+        loadModule("statistics/index");
     }
 
     public void loadProfile()
     {
         setActiveButton(profileBtn);
-        loadComponent("profile/index");
+        loadModule("profile/index");
     }
 
     public void loadSettings()
     {
         setActiveButton(settingsBtn);
-        loadComponent("settings/index");
+        loadModule("settings/index");
     }
 
     private void setActiveButton(@NotNull Button button)

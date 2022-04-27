@@ -24,16 +24,6 @@ public abstract class BaseController
         ModalFactory.setOwner(rootPane);
     }
 
-    protected void loadComponent(String fxml)
-    {
-        // Remove existing right content
-        rootPane.getChildren().remove(rootPane.getRight());
-
-        // Load pane
-        Node node = App.loadNode(fxml);
-        rootPane.setRight(node);
-    }
-
     protected void loadModule(String fxml)
     {
         // Load pane
