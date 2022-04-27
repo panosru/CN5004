@@ -103,9 +103,6 @@ public class ModalFactory
 
         protected MFXStageDialog dialog;
 
-        private Modal()
-        { }
-
         protected Modal(MFXGenericDialog dialogContent)
         {
             this.dialogContent = dialogContent;
@@ -197,20 +194,37 @@ public class ModalFactory
 
         public static class ActionButtons
         {
-            public static MFXButton CONFIRM;
-            public static MFXButton CANCEL;
-            public static MFXButton OK;
+            public static String CONFIRM;
+            public static String CANCEL;
+            public static String OK;
 
             static
             {
-                CONFIRM = new MFXButton("Confirm");
-                CONFIRM.getStyleClass().add("modal-confirm-button");
+                CONFIRM = "Confirm";
+                CANCEL = "Cancel";
+                OK = "Ok";
+            }
 
-                CANCEL = new MFXButton("Cancel");
-                CANCEL.getStyleClass().add("modal-cancel-button");
+            public static @NotNull MFXButton confirm()
+            {
+                return create(CONFIRM, "modal-confirm-button");
+            }
 
-                OK = new MFXButton("Ok");
-                OK.getStyleClass().add("modal-ok-button");
+            public static @NotNull MFXButton cancel()
+            {
+                return create(CANCEL, "modal-cancel-button");
+            }
+
+            public static @NotNull MFXButton ok()
+            {
+                return create(OK, "modal-ok-button");
+            }
+
+            public static @NotNull MFXButton create(String text, String cssClass)
+            {
+                MFXButton btn = new MFXButton(text);
+                btn.getStyleClass().add(cssClass);
+                return btn;
             }
         }
     }
