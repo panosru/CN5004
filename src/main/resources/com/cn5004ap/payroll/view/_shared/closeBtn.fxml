@@ -1,9 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.control.*?>
+<?import javafx.scene.control.Button?>
 <?import org.kordamp.ikonli.javafx.FontIcon?>
-
-<Button xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1"
+<Button xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/18"
         fx:id="closeBtn" maxHeight="-Infinity" maxWidth="-Infinity"
         minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#closeApp"
         prefHeight="15.0" prefWidth="15.0"
