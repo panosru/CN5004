@@ -16,6 +16,8 @@ import org.json.simple.parser.ParseException;
 
 import java.io.FileReader;
 import java.io.IOException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 
 public class DemoDataFeederService
     implements ISingleton
@@ -25,6 +27,8 @@ public class DemoDataFeederService
     private final UserRepository userRepository;
 
     private final SettingsRepository settingsRepository;
+
+    private final SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyy-MM-dd");
 
     private boolean executed = false;
 
@@ -100,14 +104,38 @@ public class DemoDataFeederService
         for (Object o : jsonArray)
         {
             JSONObject jsonObject = (JSONObject) o;
+            Date birth_date = null;
+            Date employment_date = null;
+            Date termination_date = null;
+
+            try
+            {
+                birth_date = simpleDateFormat.parse((String) jsonObject.get("birth_date"));
+                employment_date = simpleDateFormat.parse((String) jsonObject.get("employment_date"));
+                if (null != jsonObject.get("termination_date"))
+                    termination_date = simpleDateFormat.parse((String) jsonObject.get("termination_date"));
+            }
+            catch (java.text.ParseException e)
+            {
+                e.printStackTrace();
+            }
 
             employeeRepository.save(new EmployeeEntity(
                 (String) jsonObject.get("first_name"),
                 (String) jsonObject.get("last_name"),
                 (String) jsonObject.get("email"),
+                (String) jsonObject.get("address"),
+                (String) jsonObject.get("phone"),
+                birth_date,
+                (String) jsonObject.get("gender"),
+                (String) jsonObject.get("iban"),
+                (String) jsonObject.get("ssn"),
                 (String) jsonObject.get("department"),
                 (String) jsonObject.get("title"),
-                ((Long)jsonObject.get("salary")).doubleValue()
+                ((Long)jsonObject.get("salary")).doubleValue(),
+                (Boolean) jsonObject.get("active"),
+                employment_date,
+                termination_date
             ));
         }
     }

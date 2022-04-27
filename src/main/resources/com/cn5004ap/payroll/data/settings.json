@@ -1,13 +1,18 @@
-[{
-  "key": "tax",
-  "value": 14.12
-},{
-  "key": "insurance",
-  "value": 6.67
-},{
-  "key": "reset",
-  "value": false
-},{
-  "key": "sampleDataLoaded",
-  "value": false
-}]
+[
+  {
+    "key": "tax",
+    "value": 14.12
+  },
+  {
+    "key": "insurance",
+    "value": 6.67
+  },
+  {
+    "key": "reset",
+    "value": false
+  },
+  {
+    "key": "sampleDataLoaded",
+    "value": false
+  }
+]
