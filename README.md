@@ -18,7 +18,11 @@ Implement a system that manages the information of the employees of a company, a
 
 ![employee_selected1](https://github.com/panosru/CN5004/blob/master/screenshots/employee_selected1.png?raw=true)
 
+![employee_selected1_confirm](https://github.com/panosru/CN5004/blob/master/screenshots/employee_selected1_confirm.png?raw=true)
+
 ![employee_selected2](https://github.com/panosru/CN5004/blob/master/screenshots/employee_selected2.png?raw=true)
+
+![employee_selected2_confirm](https://github.com/panosru/CN5004/blob/master/screenshots/employee_selected2_confirm.png?raw=true)
 
 ![employee_view_terminated](https://github.com/panosru/CN5004/blob/master/screenshots/employee_view_terminated.png?raw=true)
 
