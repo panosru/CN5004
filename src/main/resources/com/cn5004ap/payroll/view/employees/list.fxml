@@ -2,30 +2,22 @@
 
 <?import io.github.palexdev.materialfx.controls.MFXButton?>
 <?import io.github.palexdev.materialfx.controls.MFXPaginatedTableView?>
+<?import javafx.scene.control.Separator?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.HBox?>
 <?import org.kordamp.ikonli.javafx.FontIcon?>
 <?import java.lang.String?>
 <?import java.net.URL?>
-<AnchorPane xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/18"
-            fx:id="childRoot" prefHeight="800" prefWidth="800"
+<AnchorPane xmlns:fx="http://javafx.com/fxml/1" fx:id="childRoot" prefHeight="800" prefWidth="800"
+            xmlns="http://javafx.com/javafx/18"
             fx:controller="com.cn5004ap.payroll.controller.employees.ListController">
     <stylesheets>
         <URL value="@../../css/employees/list.css"/>
         <URL value="@../../css/table.css"/>
     </stylesheets>
     <children>
-        <HBox id="topMenu" prefHeight="50.0" prefWidth="712.0" spacing="10.0" layoutX="14.0" layoutY="15">
+        <HBox id="topMenu" layoutX="14.0" layoutY="15" prefHeight="50.0" prefWidth="712.0" spacing="10.0">
             <children>
-                <MFXButton fx:id="showBtn" onAction="#show" text="Show" disable="true">
-                    <graphic>
-                        <FontIcon iconLiteral="fas-user-tie"/>
-                    </graphic>
-                    <styleClass>
-                        <String fx:value="employee-show"/>
-                        <String fx:value="menu"/>
-                    </styleClass>
-                </MFXButton>
                 <MFXButton fx:id="hireBtn" onAction="#hire" text="Hire">
                     <graphic>
                         <FontIcon iconLiteral="fas-user-plus"/>
@@ -35,7 +27,17 @@
                         <String fx:value="menu"/>
                     </styleClass>
                 </MFXButton>
-                <MFXButton fx:id="updateBtn" onAction="#update" text="Update" disable="true">
+                <Separator orientation="VERTICAL"/>
+                <MFXButton fx:id="showBtn" disable="true" onAction="#show" text="Show">
+                    <graphic>
+                        <FontIcon iconLiteral="fas-user-tie"/>
+                    </graphic>
+                    <styleClass>
+                        <String fx:value="employee-show"/>
+                        <String fx:value="menu"/>
+                    </styleClass>
+                </MFXButton>
+                <MFXButton fx:id="updateBtn" disable="true" onAction="#update" text="Update">
                     <graphic>
                         <FontIcon iconLiteral="fas-user-edit"/>
                     </graphic>
@@ -44,8 +46,8 @@
                         <String fx:value="menu"/>
                     </styleClass>
                 </MFXButton>
-                <MFXButton fx:id="terminateBtn" onAction="#terminate" text="Terminate" disable="true" visible="false"
-                           managed="false">
+                <MFXButton fx:id="terminateBtn" disable="true" managed="false" onAction="#terminate" text="Terminate"
+                           visible="false">
                     <graphic>
                         <FontIcon iconLiteral="fas-user-alt-slash"/>
                     </graphic>
@@ -54,8 +56,8 @@
                         <String fx:value="menu"/>
                     </styleClass>
                 </MFXButton>
-                <MFXButton fx:id="activateBtn" onAction="#activate" text="Activate" disable="true" visible="false"
-                           managed="false">
+                <MFXButton fx:id="activateBtn" disable="true" managed="false" onAction="#activate" text="Activate"
+                           visible="false">
                     <graphic>
                         <FontIcon iconLiteral="fas-user-check"/>
                     </graphic>
@@ -66,7 +68,7 @@
                 </MFXButton>
             </children>
         </HBox>
-        <MFXPaginatedTableView fx:id="table" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity"
-                               prefHeight="700.0" prefWidth="772.0" layoutX="14.0" layoutY="85"/>
+        <MFXPaginatedTableView fx:id="table" layoutX="14.0" layoutY="75" maxWidth="-Infinity" minHeight="-Infinity"
+                               minWidth="-Infinity" prefHeight="710.0" prefWidth="772.0"/>
     </children>
 </AnchorPane>
