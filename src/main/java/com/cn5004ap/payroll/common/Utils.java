@@ -4,9 +4,14 @@ import at.favre.lib.crypto.bcrypt.BCrypt;
 import javafx.animation.FadeTransition;
 import javafx.scene.Node;
 import javafx.util.Duration;
+import org.jetbrains.annotations.Contract;
 import org.jetbrains.annotations.NotNull;
 
 import java.io.File;
+import java.time.Instant;
+import java.time.LocalDate;
+import java.time.ZoneId;
+import java.util.Date;
 import java.util.Locale;
 
 /**
@@ -97,7 +102,8 @@ public final class Utils
      * @param s The plaintext string to hash.
      * @return String - a string of length 60 that is the bcrypt hashed string in crypt(3) format.
      */
-    public static String hashString(String s) {
+    @Contract("_ -> new")
+    public static @NotNull String hashString(String s) {
         // Define the BCrypt workload to use when generating password hashes. 10-31 is a valid value.
         return BCrypt.withDefaults().hashToString(12, s.toCharArray());
     }
@@ -110,7 +116,7 @@ public final class Utils
      * @param stored_hash The stored string hash, retrieved from the database.
      * @return boolean - true if the string matches the string of the stored hash, false otherwise
      */
-    public static boolean verifyHash(String s, String stored_hash) {
+    public static boolean verifyHash(@NotNull String s, String stored_hash) {
         return (BCrypt.verifyer().verify(s.toCharArray(), stored_hash)).verified;
     }
 
@@ -120,7 +126,7 @@ public final class Utils
      * @param millis the duration of the fade in.
      * @return the node.
      */
-    public static FadeTransition fadeIn(Node node, int millis)
+    public static @NotNull FadeTransition fadeIn(Node node, int millis)
     {
         return fade(node, millis, true);
     }
@@ -131,7 +137,7 @@ public final class Utils
      * @param millis the duration of the fade in.
      * @return the fade transition.
      */
-    public static FadeTransition fadeOut(Node node, int millis)
+    public static @NotNull FadeTransition fadeOut(Node node, int millis)
     {
         return fade(node, millis, false);
     }
@@ -143,7 +149,7 @@ public final class Utils
      * @param in true if the node should fade in, false if it should fade out.
      * @return the fade transition.
      */
-    public static FadeTransition fade(Node node, int millis, boolean in)
+    public static @NotNull FadeTransition fade(Node node, int millis, boolean in)
     {
         FadeTransition f = new FadeTransition(Duration.millis(millis));
 
@@ -189,5 +195,17 @@ public final class Utils
         {
             e.printStackTrace();
         }
+    }
+
+    /**
+     * Convert Date to LocalDate
+     * @param date the date to convert.
+     * @return the converted date to LocalDate
+     */
+    public static LocalDate convertDateToLocal(@NotNull Date date)
+    {
+        return Instant.ofEpochMilli(date.getTime())
+            .atZone(ZoneId.systemDefault())
+            .toLocalDate();
     }
 }
