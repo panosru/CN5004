@@ -116,7 +116,10 @@ public class ListController
         lastNameColumn.setRowCellFactory(employee -> new MFXTableRowCell<>(EmployeeEntity::getLastName));
         departmentColumn.setRowCellFactory(employee -> new MFXTableRowCell<>(EmployeeEntity::getDepartment));
         titleColumn.setRowCellFactory(employee -> new MFXTableRowCell<>(EmployeeEntity::getTitle));
-        salaryColumn.setRowCellFactory(employee -> new MFXTableRowCell<>(EmployeeEntity::getGrossSalary) {{
+        salaryColumn.setRowCellFactory(employee -> new MFXTableRowCell<>(
+            EmployeeEntity::getGrossSalary,
+            salary -> EmployeeEntity.salaryPrettify(salary, 0)
+        ) {{
             setAlignment(Pos.CENTER_RIGHT);
         }});
         statusColumn.setRowCellFactory(employee -> new MFXTableRowCell<>(EmployeeEntity::getStatusUnicode) {{

@@ -359,10 +359,16 @@ public class EmployeeEntity
         return isActive() ? "\u2713" : "\u2718";
     }
 
+
     public static String salaryPrettify(double salary)
     {
+        return salaryPrettify(salary, 2);
+    }
+
+    public static String salaryPrettify(double salary, int decimals)
+    {
         NumberFormat formatter = NumberFormat.getCurrencyInstance(Locale.GERMANY);
-        formatter.setMaximumFractionDigits(0);
+        formatter.setMaximumFractionDigits(decimals);
         return formatter.format(salary);
     }
 
