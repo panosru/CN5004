@@ -10,6 +10,7 @@ module com.cn5004ap.payroll {
     requires jakarta.persistence;
     requires org.jetbrains.annotations;
     requires org.hibernate.orm.core;
+    requires org.hibernate.validator;
     requires bcrypt;
     requires MaterialFX;
     requires org.json.simple;
@@ -22,4 +23,6 @@ module com.cn5004ap.payroll {
     exports com.cn5004ap.payroll.common;
     exports com.cn5004ap.payroll.controller;
     exports com.cn5004ap.payroll.persistence;
+    exports com.cn5004ap.payroll.controller.employees;
+    opens com.cn5004ap.payroll.controller.employees to javafx.fxml;
 }
