@@ -16,6 +16,7 @@ import java.net.URISyntaxException;
 import java.net.URLEncoder;
 import java.nio.charset.StandardCharsets;
 import java.text.SimpleDateFormat;
+import java.time.Period;
 import java.util.Date;
 
 public class ViewController
@@ -105,7 +106,17 @@ public class ViewController
             ? "-"
             : dateFormat.format(employee.getTerminationDate()));
 
-        employment_years.setText(Integer.toString(employee.getEmploymentPeriod().getYears()));
+        Period terminationPeriod = employee.getTerminationPeriod();
+
+        employment_years.setText(String.format(
+            "%s%s",
+            employee.getEmploymentPeriod().getYears(),
+            employee.isActive() ? "" : String.format(
+                " (terminated since %d years and %d months)",
+                terminationPeriod.getYears(),
+                terminationPeriod.getMonths()
+            )
+        ));
 
 
 
