@@ -125,7 +125,7 @@
         </TabPane>
         <Button id="back" layoutY="-1.0" mnemonicParsing="false" onAction="#list">
             <graphic>
-                <FontIcon iconLiteral="fas-angle-left"/>
+                <FontIcon iconLiteral="fas-angle-double-left"/>
             </graphic>
             <tooltip>
                 <Tooltip text="Back to list" />
