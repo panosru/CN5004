@@ -23,6 +23,7 @@ import javafx.scene.control.Label;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
+import java.time.Period;
 import java.util.Comparator;
 import java.util.Map;
 
@@ -225,7 +226,8 @@ public class ListController
     public void terminate()
     {
         terminateConfirmModal.setTitle(String.format("Terminate %s?", getTableSelection().getFullName()));
-        briefInfoFeed(terminateConfirmModal.getDialogContent().getCenter());
+        Period employmentPeriod = getTableSelection().getEmploymentPeriod();
+        briefInfoFeed(terminateConfirmModal.getDialogContent().getCenter(), employmentPeriod);
         terminateConfirmModal.show();
     }
 
@@ -241,7 +243,10 @@ public class ListController
     public void activate()
     {
         activateConfirmModal.setTitle(String.format("Activate %s?", getTableSelection().getFullName()));
-        briefInfoFeed(activateConfirmModal.getDialogContent().getCenter());
+        Period terminationPeriod = getTableSelection().getTerminationPeriod();
+        Node content = activateConfirmModal.getDialogContent().getLeft();
+        ((Label) content.lookup("#yearsLabel")).setText("Terminated since:");
+        briefInfoFeed(activateConfirmModal.getDialogContent().getCenter(), terminationPeriod);
         activateConfirmModal.show();
     }
 
@@ -254,12 +259,14 @@ public class ListController
         activateConfirmModal.close();
     }
 
-    private void briefInfoFeed(@NotNull Node content)
+    private void briefInfoFeed(@NotNull Node content, @NotNull Period period)
     {
         ((Label) content.lookup("#name")).setText(getTableSelection().getFirstName());
         ((Label) content.lookup("#surname")).setText(getTableSelection().getLastName());
         ((Label) content.lookup("#department")).setText(getTableSelection().getDepartment());
         ((Label) content.lookup("#title")).setText(getTableSelection().getTitle());
+        ((Label) content.lookup("#years")).setText(String.format(
+            "%s years and %d months", period.getYears(), period.getMonths()));
     }
 
     private boolean hasTableSelection()
