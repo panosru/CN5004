@@ -4,7 +4,6 @@ import com.cn5004ap.payroll.App;
 import com.cn5004ap.payroll.common.Utils;
 import com.cn5004ap.payroll.controller.BaseController;
 import com.cn5004ap.payroll.persistence.EmployeeEntity;
-import io.github.palexdev.materialfx.controls.MFXButton;
 import javafx.fxml.FXML;
 import javafx.scene.control.Hyperlink;
 import javafx.scene.control.Label;
@@ -22,9 +21,6 @@ import java.util.Date;
 public class ViewController
     extends BaseController
 {
-    @FXML
-    private MFXButton update;
-
     @FXML
     private Label iban;
 
@@ -63,6 +59,9 @@ public class ViewController
 
     @FXML
     private Label employment_date;
+
+    @FXML
+    private Label employment_years;
 
     @FXML
     private Label title;
@@ -105,6 +104,11 @@ public class ViewController
         termination_date.setText(employee.isActive()
             ? "-"
             : dateFormat.format(employee.getTerminationDate()));
+
+        employment_years.setText(Integer.toString(employee.getEmploymentPeriod().getYears()));
+
+
+
         ssn.setText(employee.getSsn());
         email.setText(employee.getEmail());
         address.setText(employee.getAddress());

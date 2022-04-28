@@ -28,30 +28,32 @@
                                 <FontIcon fx:id="status" layoutX="732.0" layoutY="43.0"/>
                                 <FontIcon fx:id="birthday" iconLiteral="fas-birthday-cake" layoutX="689.0"
                                           layoutY="42.0"/>
-                                <Pane layoutX="14.0" layoutY="62.0" prefHeight="146.0" prefWidth="776.0"
+                                <Pane layoutX="14.0" layoutY="62.0" prefHeight="180.0" prefWidth="776.0"
                                       styleClass="info-pane">
                                     <children>
-                                        <VBox alignment="CENTER_RIGHT" prefHeight="146.0" prefWidth="178.0"
+                                        <VBox alignment="CENTER_RIGHT" prefHeight="180.0" prefWidth="178.0"
                                               spacing="20.0" styleClass="vbox-labels">
                                             <children>
                                                 <Label text="Department:"/>
                                                 <Label text="Title:"/>
                                                 <Label text="Employment Date:"/>
                                                 <Label text="Termination Date"/>
+                                                <Label text="Years of employment"/>
                                             </children>
                                         </VBox>
-                                        <VBox alignment="CENTER_LEFT" layoutX="178.0" prefHeight="146.0"
+                                        <VBox alignment="CENTER_LEFT" layoutX="178.0" prefHeight="180.0"
                                               prefWidth="598.0" spacing="20.0" styleClass="vbox-data">
                                             <children>
                                                 <Label fx:id="department" text="Label"/>
                                                 <Label fx:id="title" text="Label"/>
                                                 <Label fx:id="employment_date" text="Label"/>
                                                 <Label fx:id="termination_date" text="Label"/>
+                                                <Label fx:id="employment_years" text="Label"/>
                                             </children>
                                         </VBox>
                                     </children>
                                 </Pane>
-                                <Pane layoutX="14.0" layoutY="230.0" prefHeight="221.0" prefWidth="776.0"
+                                <Pane layoutX="13.0" layoutY="263.0" prefHeight="221.0" prefWidth="776.0"
                                       styleClass="info-pane">
                                     <children>
                                         <VBox alignment="CENTER_RIGHT" prefHeight="221.0" prefWidth="178.0"
@@ -78,7 +80,7 @@
                                         </VBox>
                                     </children>
                                 </Pane>
-                                <Pane layoutX="14.0" layoutY="472.0" prefHeight="177.0" prefWidth="776.0"
+                                <Pane layoutX="13.0" layoutY="505.0" prefHeight="177.0" prefWidth="776.0"
                                       styleClass="info-pane">
                                     <children>
                                         <VBox alignment="CENTER_RIGHT" prefHeight="177.0" prefWidth="178.0"
@@ -103,8 +105,8 @@
                                         </VBox>
                                     </children>
                                 </Pane>
-                                <MFXButton fx:id="update" layoutX="359.0" layoutY="682.0" onAction="#update"
-                                           styleClass="menu" text="Update">
+                                <MFXButton layoutX="359.0" layoutY="703.0" onAction="#update" styleClass="menu"
+                                           text="Update">
                                     <graphic>
                                         <FontIcon iconLiteral="fas-user-edit"/>
                                     </graphic>

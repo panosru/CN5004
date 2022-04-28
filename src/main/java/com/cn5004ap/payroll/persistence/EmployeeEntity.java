@@ -1,11 +1,13 @@
 package com.cn5004ap.payroll.persistence;
 
+import com.cn5004ap.payroll.common.Utils;
 import com.cn5004ap.payroll.controller.SettingsController;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Table;
 
 import java.text.NumberFormat;
+import java.time.Period;
 import java.util.Arrays;
 import java.util.Collections;
 import java.util.Date;
@@ -159,6 +161,14 @@ public class EmployeeEntity
     public void setTerminationDate(Date terminationDate)
     {
         this.terminationDate = terminationDate;
+    }
+
+    public Period getEmploymentPeriod()
+    {
+        return Period.between(
+            Utils.convertDateToLocal(getEmploymentDate()),
+            Utils.convertDateToLocal(isActive() ? new Date() : getTerminationDate())
+        );
     }
 
     public void activate()
