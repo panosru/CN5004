@@ -3,15 +3,18 @@ package com.cn5004ap.payroll.persistence;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Table;
+import org.hibernate.validator.constraints.NotBlank;
 
 @Entity
 @Table(name = "settings")
 public class SettingsEntity
     extends BaseEntity
 {
+    @NotBlank
     @Column(name = "_key")
     private String _key;
 
+    @NotBlank
     @Column(name = "_value")
     private String _value;
 

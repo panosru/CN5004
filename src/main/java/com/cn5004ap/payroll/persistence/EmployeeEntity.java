@@ -5,6 +5,9 @@ import com.cn5004ap.payroll.controller.SettingsController;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Table;
+import org.hibernate.validator.constraints.Email;
+import org.hibernate.validator.constraints.NotBlank;
+import org.hibernate.validator.constraints.NotEmpty;
 
 import java.text.NumberFormat;
 import java.time.Period;
@@ -18,51 +21,68 @@ import java.util.Locale;
 public class EmployeeEntity
     extends BaseEntity
 {
+    @NotBlank
     @Column(name = "first_name")
     private String firstName;
 
+    @NotBlank
     @Column(name = "last_name")
     private String lastName;
 
-    @Column(name = "email")
+    @Email
+    @NotEmpty
+    @Column(name = "email", unique = true)
     private String email;
 
+    @NotBlank
     @Column(name = "address")
     private String address;
 
+    @NotBlank
     @Column(name = "phone")
     private String phone;
 
+    @NotBlank
     @Column(name = "birth_date")
     private Date birthDate;
 
+    @NotBlank
     @Column(name = "gender")
     private String gender;
 
-    @Column(name = "iban")
+    @NotBlank
+    @Column(name = "iban", unique = true)
     private String iban;
 
-    @Column(name = "ssn")
+    @NotBlank
+    @Column(name = "ssn", unique = true)
     private String ssn;
 
+    @NotBlank
     @Column(name = "department")
     private String department;
 
+    @NotBlank
     @Column(name = "title")
     private String title;
 
+    @NotBlank
     @Column(name = "salary")
     private double grossSalary;
 
+    @NotBlank
     @Column(name = "active")
     private boolean active;
 
+    @NotBlank
     @Column(name = "employment_date")
     private Date employmentDate;
 
+    @NotBlank
     @Column(name = "termination_date")
     private Date terminationDate;
 
+    @NotBlank
     @Column(name = "last_updated")
     private Date lastUpdated;
 

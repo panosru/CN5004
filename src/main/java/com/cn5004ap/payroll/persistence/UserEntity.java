@@ -4,28 +4,36 @@ import com.cn5004ap.payroll.common.Utils;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Table;
+import org.hibernate.validator.constraints.Email;
+import org.hibernate.validator.constraints.NotBlank;
 
 @Entity
 @Table(name = "users")
 public class UserEntity
     extends BaseEntity
 {
+    @NotBlank
     @Column(name = "first_name")
     private String firstName;
 
+    @NotBlank
     @Column(name = "last_name")
     private String lastName;
 
-    @Column(name = "email")
+    @Email
+    @NotBlank
+    @Column(name = "email", unique = true)
     private String email;
 
-    @Column(name = "username")
+    @NotBlank
+    @Column(name = "username", unique = true)
     private String username;
 
+    @NotBlank
     @Column(name = "password")
     private String password;
 
-    @Column(name = "token")
+    @Column(name = "token", unique = true)
     private String token;
 
     public UserEntity()
