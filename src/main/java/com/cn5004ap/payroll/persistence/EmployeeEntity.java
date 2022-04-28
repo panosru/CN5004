@@ -171,6 +171,14 @@ public class EmployeeEntity
         );
     }
 
+    public Period getTerminationPeriod()
+    {
+        return Period.between(
+            Utils.convertDateToLocal(getTerminationDate()),
+            Utils.convertDateToLocal(new Date())
+        );
+    }
+
     public void activate()
     {
         setActive(true);
