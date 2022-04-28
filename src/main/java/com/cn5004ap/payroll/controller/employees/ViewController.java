@@ -106,16 +106,20 @@ public class ViewController
             ? "-"
             : dateFormat.format(employee.getTerminationDate()));
 
-        Period terminationPeriod = employee.getTerminationPeriod();
 
-        employment_years.setText(String.format(
-            "%s%s",
-            employee.getEmploymentPeriod().getYears(),
-            employee.isActive() ? "" : String.format(
+        String terminationPeriodStr = "";
+        if (!employee.isActive())
+        {
+            Period terminationPeriod = employee.getTerminationPeriod();
+            terminationPeriodStr = String.format(
                 " (terminated since %d years and %d months)",
                 terminationPeriod.getYears(),
                 terminationPeriod.getMonths()
-            )
+            );
+        }
+
+        employment_years.setText(String.format(
+            "%s%s", employee.getEmploymentPeriod().getYears(), terminationPeriodStr
         ));
 
 
