@@ -162,7 +162,8 @@ public class ModalFactory
             {
                 case GENERIC -> new Pair<>(null, null);
                 case INFO -> new Pair<>(
-                    "mfx-info-dialog", new MFXFontIcon(FontResources.INFO_CIRCLE_FILLED.getDescription(), 18));
+                    //FontResources.INFO_CIRCLE_FILLED.getDescription()
+                    "mfx-info-dialog", new MFXFontIcon("mfx-info-circle-filled", 18));
                 case WARNING -> new Pair<>(
                     "mfx-warn-dialog", new MFXFontIcon(FontResources.DO_NOT_ENTER_CIRCLE.getDescription(), 18));
                 case ERROR -> new Pair<>(
