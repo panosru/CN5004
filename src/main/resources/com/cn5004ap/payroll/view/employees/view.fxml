@@ -6,12 +6,12 @@
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.Tab?>
 <?import javafx.scene.control.TabPane?>
+<?import javafx.scene.control.Tooltip?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.layout.VBox?>
 <?import org.kordamp.ikonli.javafx.FontIcon?>
 <?import java.net.URL?>
-<?import javafx.scene.control.Tooltip?>
 <AnchorPane xmlns:fx="http://javafx.com/fxml/1" fx:id="childRoot" prefHeight="800.0" prefWidth="800.0"
             xmlns="http://javafx.com/javafx/18"
             fx:controller="com.cn5004ap.payroll.controller.employees.ViewController">
@@ -106,7 +106,7 @@
                                         </VBox>
                                     </children>
                                 </Pane>
-                                <MFXButton layoutX="359.0" layoutY="695.0" onAction="#update" styleClass="menu"
+                                <MFXButton layoutX="330.0" layoutY="695.0" onAction="#update" styleClass="menu"
                                            text="Update">
                                     <graphic>
                                         <FontIcon iconLiteral="fas-user-edit"/>
@@ -128,7 +128,7 @@
                 <FontIcon iconLiteral="fas-angle-double-left"/>
             </graphic>
             <tooltip>
-                <Tooltip text="Back to list" />
+                <Tooltip text="Back to list"/>
             </tooltip>
         </Button>
     </children>

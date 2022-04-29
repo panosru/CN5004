@@ -2,15 +2,16 @@
 
 <?import io.github.palexdev.materialfx.controls.MFXButton?>
 <?import io.github.palexdev.materialfx.controls.MFXTextField?>
-<?import java.net.URL?>
 <?import javafx.scene.control.Tab?>
 <?import javafx.scene.control.TabPane?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.BorderPane?>
-
-<AnchorPane fx:id="childRoot" prefHeight="800.0" prefWidth="800.0" BorderPane.alignment="CENTER" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.cn5004ap.payroll.controller.SettingsController">
+<?import java.net.URL?>
+<AnchorPane xmlns:fx="http://javafx.com/fxml/1" fx:id="childRoot" prefHeight="800.0" prefWidth="800.0"
+            BorderPane.alignment="CENTER" xmlns="http://javafx.com/javafx/18"
+            fx:controller="com.cn5004ap.payroll.controller.SettingsController">
     <stylesheets>
-        <URL value="@../../css/settings.css" />
+        <URL value="@../../css/settings.css"/>
     </stylesheets>
     <children>
         <TabPane layoutY="0" prefHeight="578.0" prefWidth="800.0" styleClass="tabPane" tabClosingPolicy="UNAVAILABLE">
@@ -19,14 +20,16 @@
                     <content>
                         <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                             <children>
-                                <MFXTextField fx:id="tax" floatingText="Taxes %" layoutX="35.0" layoutY="34.0" prefHeight="51.0" prefWidth="136.0" />
-                                <MFXTextField fx:id="insurance" floatingText="Insurance %" layoutX="329.0" layoutY="34.0" prefHeight="51.0" prefWidth="138.0" />
+                                <MFXTextField fx:id="tax" floatingText="Taxes %" layoutX="35.0" layoutY="34.0"
+                                              prefHeight="51.0" prefWidth="136.0"/>
+                                <MFXTextField fx:id="insurance" floatingText="Insurance %" layoutX="329.0"
+                                              layoutY="34.0" prefHeight="51.0" prefWidth="138.0"/>
                             </children>
                         </AnchorPane>
                     </content>
                 </Tab>
             </tabs>
         </TabPane>
-              <MFXButton fx:id="save" layoutX="711.0" layoutY="739.0" onAction="#onSave" text="Save" />
+        <MFXButton fx:id="save" layoutX="711.0" layoutY="739.0" onAction="#onSave" text="Save"/>
     </children>
 </AnchorPane>
