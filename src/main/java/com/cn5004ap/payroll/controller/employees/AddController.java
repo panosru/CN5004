@@ -4,7 +4,7 @@ import com.cn5004ap.payroll.controller.BaseController;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 
-public class UpdateController
+public class AddController
     extends BaseController
 {
     @FXML
@@ -13,10 +13,11 @@ public class UpdateController
     @Override
     public void initialize()
     {
-        dataController.saveBtn.setOnAction(this::update);
+        dataController.backBtn.setVisible(false);
+        dataController.saveBtn.setOnAction(this::save);
     }
 
-    public void update(ActionEvent event)
+    public void save(ActionEvent event)
     {
         System.out.println(dataController.firstName.getText());
     }

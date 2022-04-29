@@ -216,7 +216,7 @@ public class ListController
 
     public void hire()
     {
-
+        loadModule("employees/add");
     }
 
     public void update()

@@ -3,7 +3,7 @@
 <?import javafx.scene.layout.AnchorPane?>
 <AnchorPane xmlns:fx="http://javafx.com/fxml/1" fx:id="childRoot" prefHeight="800.0" prefWidth="800.0"
             xmlns="http://javafx.com/javafx/18"
-            fx:controller="com.cn5004ap.payroll.controller.employees.UpdateController">
+            fx:controller="com.cn5004ap.payroll.controller.employees.AddController">
     <children>
         <fx:include fx:id="data" source="_shared/data.fxml"/>
     </children>

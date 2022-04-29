@@ -1,0 +1,62 @@
+.back {
+    -fx-background-color: transparent;
+    -fx-background-radius: 0;
+    -fx-pref-width: 20;
+}
+
+#backToListBtn:hover {
+    -fx-background-color: -app-dark-blue;
+}
+
+#backBtn:hover {
+    -fx-background-color: -app-light-blue;
+}
+
+.mfx-titled-pane .header-pane .header-label {
+    -fx-font-weight: bold;
+}
+
+.mfx-titled-pane .header-pane .mfx-icon-wrapper {
+    visibility: hidden;
+}
+
+MFXTextField.data-error {
+    -fx-border-color: red;
+}
+
+MFXTextField.data-error .floating-text {
+    -fx-text-fill: red;
+}
+
+.fieldset {
+    -mfx-main: -mfx-purple;
+    -fx-background-color: white;
+    -fx-background-radius: 5;
+    -fx-border-color: lightgray;
+    -fx-border-radius: 5;
+    -fx-padding: 5;
+}
+
+.fieldset:focus-within {
+    -fx-border-color: -mfx-purple;
+}
+
+.fieldset:focus-within .fieldset-title {
+    -fx-text-fill: -mfx-purple;
+}
+
+.fieldset .fieldset-title {
+    -fx-padding: 0 3;
+    -fx-font-family: "Open Sans Regular";
+    -fx-text-fill: -mfx-text-he;
+    -fx-background-color: white;
+}
+
+.fieldset MFXDatePicker {
+    -fx-border-color: transparent;
+    -fx-background-color: transparent;
+}
+
+.vbox-labels Label {
+    -fx-font-weight: bold;
+}
