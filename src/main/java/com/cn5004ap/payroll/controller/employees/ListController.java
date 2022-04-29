@@ -210,7 +210,7 @@ public class ListController
 
     public void show()
     {
-        App.getUserData().setSelectedEmployee(getTableSelection());
+        storeSelectedEmployeeToSession();
         loadModule("employees/view");
     }
 
@@ -221,6 +221,8 @@ public class ListController
 
     public void update()
     {
+        storeSelectedEmployeeToSession();
+        loadModule("employees/update");
     }
 
     public void terminate()
@@ -267,6 +269,11 @@ public class ListController
         ((Label) content.lookup("#title")).setText(getTableSelection().getTitle());
         ((Label) content.lookup("#years")).setText(String.format(
             "%s years and %d months", period.getYears(), period.getMonths()));
+    }
+
+    private void storeSelectedEmployeeToSession()
+    {
+        App.getUserData().setSelectedEmployee(getTableSelection());
     }
 
     private boolean hasTableSelection()
