@@ -2,89 +2,80 @@ package com.cn5004ap.payroll.persistence;
 
 import com.cn5004ap.payroll.common.Utils;
 import com.cn5004ap.payroll.controller.SettingsController;
+import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
+import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
+import org.hibernate.annotations.Cascade;
 import org.hibernate.validator.constraints.Email;
 import org.hibernate.validator.constraints.NotBlank;
 import org.hibernate.validator.constraints.NotEmpty;
 
-import java.text.NumberFormat;
 import java.time.Period;
 import java.util.Arrays;
 import java.util.Collections;
 import java.util.Date;
-import java.util.Locale;
+import java.util.HashSet;
+import java.util.Set;
 
 @Entity
 @Table(name = "employees")
 public class EmployeeEntity
     extends BaseEntity
 {
-    @NotBlank
-    @Column(name = "first_name")
+    @Column(name = "first_name", nullable = false)
     private String firstName;
 
-    @NotBlank
-    @Column(name = "last_name")
+    @Column(name = "last_name", nullable = false)
     private String lastName;
 
     @Email
-    @NotEmpty
-    @Column(name = "email", unique = true)
+    @Column(name = "email", unique = true, nullable = false)
     private String email;
 
-    @NotBlank
-    @Column(name = "address")
+    @Column(name = "address", nullable = false)
     private String address;
 
-    @NotBlank
-    @Column(name = "phone")
+    @Column(name = "phone", nullable = false)
     private String phone;
 
-    @NotBlank
-    @Column(name = "birth_date")
+    @Column(name = "birth_date", nullable = false)
     private Date birthDate;
 
-    @NotBlank
-    @Column(name = "gender")
+    @Column(name = "gender", nullable = false)
     private String gender;
 
-    @NotBlank
-    @Column(name = "iban", unique = true)
+    @Column(name = "iban", unique = true, nullable = false)
     private String iban;
 
-    @NotBlank
-    @Column(name = "ssn", unique = true)
+    @Column(name = "ssn", unique = true, nullable = false)
     private String ssn;
 
-    @NotBlank
-    @Column(name = "department")
+    @Column(name = "department", nullable = false)
     private String department;
 
-    @NotBlank
-    @Column(name = "title")
+    @Column(name = "title", nullable = false)
     private String title;
 
-    @NotBlank
-    @Column(name = "salary")
+    @Column(name = "salary", nullable = false)
     private double grossSalary;
 
-    @NotBlank
-    @Column(name = "active")
+    @Column(name = "active", nullable = false)
     private boolean active;
 
-    @NotBlank
-    @Column(name = "employment_date")
+    @Column(name = "employment_date", nullable = false)
     private Date employmentDate;
 
-    @NotBlank
     @Column(name = "termination_date")
     private Date terminationDate;
 
-    @NotBlank
     @Column(name = "last_updated")
     private Date lastUpdated;
+
+    @OneToMany(mappedBy = "employee", cascade = {CascadeType.PERSIST, CascadeType.MERGE})
+    @Cascade(org.hibernate.annotations.CascadeType.REPLICATE)
+    private final Set<TransactionEntity> transactions = new HashSet<>();
 
     public EmployeeEntity()
     {}
@@ -390,6 +381,16 @@ public class EmployeeEntity
     {
         setActive(false);
         setTerminationDate(new Date());
+    }
+
+    public Set<TransactionEntity> getTransactions()
+    {
+        return transactions;
+    }
+
+    public void addTransaction(TransactionEntity transaction)
+    {
+        transactions.add(transaction);
     }
 
     public Date getLastUpdated()
