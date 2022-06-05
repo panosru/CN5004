@@ -8,9 +8,11 @@ import org.jetbrains.annotations.Contract;
 import org.jetbrains.annotations.NotNull;
 
 import java.io.File;
+import java.text.NumberFormat;
 import java.time.Instant;
 import java.time.LocalDate;
 import java.time.ZoneId;
+import java.util.Currency;
 import java.util.Date;
 import java.util.Locale;
 
@@ -207,5 +209,51 @@ public final class Utils
         return Instant.ofEpochMilli(date.getTime())
             .atZone(ZoneId.systemDefault())
             .toLocalDate();
+    }
+
+    /**
+     * Convert LocalDate to Date
+     * @param localDate the local date to convert.
+     * @return the converted local date to Date
+     */
+    @Contract("_ -> new")
+    public static @NotNull Date convertLocalDateToDate(@NotNull LocalDate localDate)
+    {
+        return Date.from(localDate.atStartOfDay(ZoneId.systemDefault()).toInstant());
+    }
+
+    /**
+     * Prettify a double to a string
+     * @param salary the double to prettify.
+     * @return the prettified string.
+     */
+    public static String moneyFormat(double salary)
+    {
+        return moneyFormat(salary, 2);
+    }
+
+    /**
+     * Prettify a double to a string with a certain number of decimal places.
+     * @param salary the salary to prettify.
+     * @param decimals the number of decimal places.
+     * @return the prettified string.
+     */
+    public static String moneyFormat(double salary, int decimals)
+    {
+        return moneyFormat(salary, decimals, Locale.GERMANY);
+    }
+
+    /**
+     * Display a double value in monetary format
+     * @param salary the value to display
+     * @param decimals the number of decimals to display
+     * @param locale the locale to use
+     * @return the formatted value
+     */
+    public static String moneyFormat(double salary, int decimals, Locale locale)
+    {
+        NumberFormat formatter = NumberFormat.getCurrencyInstance(locale);
+        formatter.setMaximumFractionDigits(decimals);
+        return formatter.format(salary);
     }
 }
