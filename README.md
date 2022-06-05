@@ -1,12 +1,13 @@
 # CN5004
 
 ### Assignment description
-
 Implement a system that manages the information of the employees of a company, and records their monthly salary and their deductions for taxes and insurance. The system should display detailed reports such as payroll statements for one or all employees including their gross and net earnings.
 
 ### Requirements
-
 Java 17
+JavaFX 18
+
+`java --module-path "/Library/Java/JavaVirtualMachines/javafx-sdk-18.0.1/lib" --add-modules=ALL-MODULE-PATH -jar cn5004ap-payroll-1.0-SNAPSHOT.jar`
 
 ### Screenshots
 
