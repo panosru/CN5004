@@ -4,6 +4,10 @@
 
 Implement a system that manages the information of the employees of a company, and records their monthly salary and their deductions for taxes and insurance. The system should display detailed reports such as payroll statements for one or all employees including their gross and net earnings.
 
+### Requirements
+
+Java 17
+
 ### Screenshots
 
 **Login Screen**
@@ -27,6 +31,17 @@ Implement a system that manages the information of the employees of a company, a
 ![employee_view_terminated](https://github.com/panosru/CN5004/blob/master/screenshots/employee_view_terminated.png?raw=true)
 
 ![employee_view_active_birthday](https://github.com/panosru/CN5004/blob/master/screenshots/employee_view_active_birthday.png?raw=true)
+
+![employee_transactions](https://github.com/panosru/CN5004/blob/master/screenshots/employee_transactions.png?raw=true)
+
+![employee_add](https://github.com/panosru/CN5004/blob/master/screenshots/employee_add.png?raw=true)
+
+![form_validation](https://github.com/panosru/CN5004/blob/master/screenshots/form_validation.png?raw=true)
+
+![employee_update](https://github.com/panosru/CN5004/blob/master/screenshots/employee_update.png?raw=true)
+
+**Transactions Scene**
+![all_employee_transactions](https://github.com/panosru/CN5004/blob/master/screenshots/all_employee_transactions.png?raw=true)
 
 **Statistics Sneak-Peak**
 
