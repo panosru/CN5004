@@ -19,11 +19,13 @@
 .mfx-titled-pane .header-pane .mfx-icon-wrapper {
     visibility: hidden;
 }
+MFXDatePicker.data-error,
 MaskField.data-error,
 MFXTextField.data-error {
     -fx-border-color: red;
 }
 
+MFXDatePicker.data-error .floating-text,
 MaskField.data-error .floating-text,
 MFXTextField.data-error .floating-text {
     -fx-text-fill: red;
