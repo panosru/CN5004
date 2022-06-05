@@ -4,6 +4,7 @@ import io.github.palexdev.materialfx.controls.MFXTextField;
 import io.github.palexdev.materialfx.validation.Constraint;
 import io.github.palexdev.materialfx.validation.Severity;
 import javafx.beans.binding.BooleanExpression;
+import javafx.beans.property.SimpleStringProperty;
 import javafx.scene.control.Tooltip;
 import org.jetbrains.annotations.Contract;
 import org.jetbrains.annotations.NotNull;
@@ -51,6 +52,11 @@ public final class DataValidator
                    .get();
     }
 
+    /**
+     * Add a constraint to the field.
+     * @param args (int) length | LengthConstraint | message | severity
+     * @return this
+     */
     @Contract("_ -> this")
     public DataValidator lengthConstraint(Object @NotNull ... args)
     {
@@ -86,23 +92,38 @@ public final class DataValidator
         switch (lengthConstraint)
         {
             case EXACT -> addConstraint(constraintBuilder(
-                field.textProperty().length().isEqualTo(length),
+                (field instanceof MaskField)
+                ? (new SimpleStringProperty(((MaskField) field).getPlainText())).length().isEqualTo(length)
+                : field.textProperty().length().isEqualTo(length),
                 String.format(message, "exactly", length),
                 severity
             ));
 
             case MIN -> addConstraint(constraintBuilder(
-                field.textProperty().length().greaterThanOrEqualTo(length),
+                (field instanceof MaskField)
+                ? (new SimpleStringProperty(((MaskField) field).getPlainText())).length().greaterThanOrEqualTo(length)
+                : field.textProperty().length().greaterThanOrEqualTo(length),
                 String.format(message, "at least", length),
                 severity
             ));
 
             case MAX -> addConstraint(constraintBuilder(
-                field.textProperty().length().lessThanOrEqualTo(length),
+                (field instanceof MaskField)
+                ? (new SimpleStringProperty(((MaskField) field).getPlainText())).length().lessThanOrEqualTo(length)
+                : field.textProperty().length().lessThanOrEqualTo(length),
                 String.format(message, "maximum", length),
                 severity
             ));
         }
+
+        return this;
+    }
+
+    public DataValidator notEmpty()
+    {
+        lengthConstraint(1, LengthConstraint.MIN, String.format(
+            "%s must not be empty.", field.getFloatingText()
+        ));
 
         return this;
     }
