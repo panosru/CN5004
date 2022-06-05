@@ -52,9 +52,9 @@ MFXTextField.data-error .floating-text {
     -fx-background-color: white;
 }
 
-.fieldset MFXDatePicker {
-    -fx-border-color: transparent;
-    -fx-background-color: transparent;
+MFXDatePicker.mfx-text-field:floating .floating-text {
+    -fx-font-size: 15;
+    -fx-padding: 0 3;
 }
 
 .vbox-labels Label {
