@@ -19,11 +19,12 @@
 .mfx-titled-pane .header-pane .mfx-icon-wrapper {
     visibility: hidden;
 }
-
+MaskField.data-error,
 MFXTextField.data-error {
     -fx-border-color: red;
 }
 
+MaskField.data-error .floating-text,
 MFXTextField.data-error .floating-text {
     -fx-text-fill: red;
 }
