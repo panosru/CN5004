@@ -3,6 +3,7 @@ package com.cn5004ap.payroll.controller.employees;
 import com.cn5004ap.payroll.App;
 import com.cn5004ap.payroll.common.ModalFactory;
 import com.cn5004ap.payroll.common.Multiton;
+import com.cn5004ap.payroll.common.Utils;
 import com.cn5004ap.payroll.controller.BaseController;
 import com.cn5004ap.payroll.persistence.EmployeeEntity;
 import com.cn5004ap.payroll.persistence.EmployeeRepository;
@@ -119,7 +120,7 @@ public class ListController
         titleColumn.setRowCellFactory(employee -> new MFXTableRowCell<>(EmployeeEntity::getTitle));
         salaryColumn.setRowCellFactory(employee -> new MFXTableRowCell<>(
             EmployeeEntity::getGrossSalary,
-            salary -> EmployeeEntity.salaryPrettify(salary, 0)
+            salary -> Utils.moneyFormat(salary, 0)
         ) {{
             setAlignment(Pos.CENTER_RIGHT);
         }});

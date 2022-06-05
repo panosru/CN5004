@@ -130,10 +130,10 @@ public class ViewController
         phone.setText(employee.getPhone());
         birth_date.setText(dateFormat.format(employee.getBirthDate()));
         gender.setText(Utils.capitalise(employee.getGenderEnum().name()));
-        gross_salary.setText(EmployeeEntity.salaryPrettify(employee.getGrossSalary()));
-        insurance.setText(EmployeeEntity.salaryPrettify(employee.getInsuranceExpense()));
-        tax_expense.setText(EmployeeEntity.salaryPrettify(employee.getTaxExpense()));
-        net_salary.setText(EmployeeEntity.salaryPrettify(employee.getNetSalary()));
+        gross_salary.setText(Utils.moneyFormat(employee.getGrossSalary()));
+        insurance.setText(Utils.moneyFormat(employee.getInsuranceExpense()));
+        tax_expense.setText(Utils.moneyFormat(employee.getTaxExpense()));
+        net_salary.setText(Utils.moneyFormat(employee.getNetSalary()));
         iban.setText(employee.getIban());
     }
 
