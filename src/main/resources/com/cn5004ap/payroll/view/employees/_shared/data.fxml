@@ -57,14 +57,14 @@
                                       prefHeight="51.0" prefWidth="350.0"/>
                         <MFXTextField fx:id="lastName" floatingText="Last Name" layoutX="382.0" layoutY="21.0"
                                       prefHeight="51.0" prefWidth="350.0"/>
+                        <MaskField fx:id="phone" mask="DDD-DDDD-DDD" placeholder="###-####-###" floatingText="Phone" layoutX="8.0" layoutY="93.0" prefHeight="51.0"
+                                   prefWidth="350.0"/>
                         <MFXTextField fx:id="email" floatingText="Email" layoutX="382.0" layoutY="93.0"
                                       prefHeight="51.0" prefWidth="350.0"/>
                         <MFXTextField fx:id="address" floatingText="Address" layoutX="8.0" layoutY="162.0"
                                       prefHeight="51.0" prefWidth="350.0"/>
-                        <MaskField fx:id="phone" mask="DDD-DDDD-DDD" placeholder="###-####-###" floatingText="Phone" layoutX="8.0" layoutY="93.0" prefHeight="51.0"
-                                      prefWidth="350.0"/>
-                        <MaskField fx:id="ssn" mask="DDD-DD-DDDD" placeholder="###-##-####" floatingText="SSN" layoutX="466.0" layoutY="227.0" prefHeight="51.0"
-                                      prefWidth="266.0"/>
+                        <MaskField mask="AAWW WWWW WWWW WWWW WWWW WWWW WWW" fx:id="iban" floatingText="IBAN" layoutX="382.0" layoutY="162.0" prefHeight="51.0"
+                                   prefWidth="350.0"/>
                         <Pane layoutX="8.0" layoutY="229.0" prefHeight="51.0" prefWidth="231.0" styleClass="fieldset">
                             <children>
                                 <MFXRadioButton layoutX="14.0" layoutY="17.0" text="Male">
@@ -79,8 +79,8 @@
                         <MFXDatePicker fx:id="birthDate" prefHeight="51.0" prefWidth="197.0" layoutX="254.0"
                                        layoutY="229.0" promptText="DD/MM/YYYY" floatingText="Birth Date"
                                        floatMode="BORDER"/>
-                        <MaskField mask="AAWW WWWW WWWW WWWW WWWW WWWW WWW" fx:id="iban" floatingText="IBAN" layoutX="382.0" layoutY="162.0" prefHeight="51.0"
-                                      prefWidth="350.0"/>
+                        <MaskField fx:id="ssn" mask="DDD-DD-DDDD" placeholder="###-##-####" floatingText="SSN" layoutX="466.0" layoutY="227.0" prefHeight="51.0"
+                                   prefWidth="266.0"/>
                     </children>
                 </Pane>
             </content>
