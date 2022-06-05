@@ -23,6 +23,14 @@ public final class DataValidator
 
     private final String ERROR_STYLE_CLASS = "data-error";
 
+    public final String[] UPPER_CHARS = "A B C D E F G H I J K L M N O P Q R S T U V W X Y Z".split(" ");
+
+    public final String[] LOWER_CHARS = "a b c d e f g h i j k l m n o p q r s t u v w x y z".split(" ");
+
+    public final String[] DIGITS = "0 1 2 3 4 5 6 7 8 9".split(" ");
+
+    public final String[] SPECIAL_CHARS = "! @ # & ( ) – [ { } ]: ; ' , ? / * ~ $ ^ + = < > -".split(" ");
+
     private DataValidator(MFXTextField field)
     {
         this.field = field;
@@ -34,13 +42,67 @@ public final class DataValidator
         return new DataValidator(field);
     }
 
-    public DataValidator lengthConstraint(int length, String message, Severity severity)
+    public static Constraint constraintBuilder(BooleanExpression condition, String message, Severity severity)
     {
-        addConstraint(constraintBuilder(
-            field.textProperty().length().greaterThanOrEqualTo(length),
-            String.format(message, length),
-            severity
-        ));
+        return Constraint.Builder.build()
+                   .setSeverity(severity)
+                   .setMessage(message)
+                   .setCondition(condition)
+                   .get();
+    }
+
+    @Contract("_ -> this")
+    public DataValidator lengthConstraint(Object @NotNull ... args)
+    {
+        // First argument, if it does not exist,
+        // then a run-time exception will be thrown
+        Integer length = (Integer) args[0];
+
+        // Default value for lengthConstraint = LengthConstraint.MAX
+        LengthConstraint lengthConstraint = LengthConstraint.MAX;
+
+        // Empty value for message
+        String message = "";
+
+        // Default severity level is ERROR
+        Severity severity = Severity.ERROR;
+
+        // Replace defaults if replacements exist
+        try
+        {
+            lengthConstraint = (LengthConstraint) args[1];
+            message = (String) args[2];
+            severity = (Severity) args[3];
+        }
+        catch (Exception ignored)
+        { }
+
+        if (message.isEmpty())
+            message  = String.format(
+                "%s must be %%s %%d characters long",
+                field.getFloatingText()
+            );
+
+        switch (lengthConstraint)
+        {
+            case EXACT -> addConstraint(constraintBuilder(
+                field.textProperty().length().isEqualTo(length),
+                String.format(message, "exactly", length),
+                severity
+            ));
+
+            case MIN -> addConstraint(constraintBuilder(
+                field.textProperty().length().greaterThanOrEqualTo(length),
+                String.format(message, "at least", length),
+                severity
+            ));
+
+            case MAX -> addConstraint(constraintBuilder(
+                field.textProperty().length().lessThanOrEqualTo(length),
+                String.format(message, "maximum", length),
+                severity
+            ));
+        }
 
         return this;
     }
@@ -88,12 +150,10 @@ public final class DataValidator
         });
     }
 
-    private Constraint constraintBuilder(BooleanExpression condition, String message, Severity severity)
+    public enum LengthConstraint
     {
-        return Constraint.Builder.build()
-                   .setSeverity(severity)
-                   .setMessage(message)
-                   .setCondition(condition)
-                   .get();
+        MIN,
+        MAX,
+        EXACT
     }
 }
