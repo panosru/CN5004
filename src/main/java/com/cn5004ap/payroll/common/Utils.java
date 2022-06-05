@@ -212,6 +212,21 @@ public final class Utils
     }
 
     /**
+     * Count digits in a string
+     * @param s the string to count digits in.
+     * @return the number of digits in the string.
+     */
+    public static Integer countDigits(@NotNull String s)
+    {
+        int digits = 0;
+
+        for (int i = 0; i < s.length(); i++)
+            if (48 <= s.charAt(i) && 57 >= s.charAt(i)) digits++;
+
+        return digits;
+    }
+
+    /**
      * Convert LocalDate to Date
      * @param localDate the local date to convert.
      * @return the converted local date to Date
