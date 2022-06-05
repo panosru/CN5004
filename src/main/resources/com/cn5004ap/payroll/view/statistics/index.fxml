@@ -1,14 +1,26 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.control.*?>
-<?import javafx.scene.layout.*?>
-
-<AnchorPane xmlns="http://javafx.com/javafx"
-            xmlns:fx="http://javafx.com/fxml"
-            fx:controller="com.cn5004ap.payroll.controller.StatisticsController"
-            id="master" prefHeight="800.0" prefWidth="800.0" BorderPane.alignment="CENTER">
+<?import eu.hansolo.tilesfx.tools.FlowGridPane?>
+<?import javafx.scene.chart.BarChart?>
+<?import javafx.scene.chart.CategoryAxis?>
+<?import javafx.scene.chart.NumberAxis?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.BorderPane?>
+<?import java.net.URL?>
+<AnchorPane xmlns:fx="http://javafx.com/fxml/1" prefHeight="800.0" prefWidth="800.0" BorderPane.alignment="CENTER"
+            xmlns="http://javafx.com/javafx/18" fx:controller="com.cn5004ap.payroll.controller.StatisticsController">
+    <stylesheets>
+        <URL value="@../../css/stats.css"/>
+    </stylesheets>
     <children>
-        <fx:include layoutX="777.0" layoutY="4.0" source="../_shared/closeBtn.fxml" />
-        <Label layoutX="289.0" layoutY="332.0" text="Statistics" />
+        <BarChart fx:id="barChart" layoutX="10.0" layoutY="497.0" prefHeight="289.0" prefWidth="781.0">
+            <xAxis>
+                <CategoryAxis side="BOTTOM"/>
+            </xAxis>
+            <yAxis>
+                <NumberAxis side="LEFT"/>
+            </yAxis>
+        </BarChart>
+        <FlowGridPane fx:id="fgp" layoutX="15.0" layoutY="15.0"/>
     </children>
 </AnchorPane>

@@ -4,6 +4,8 @@ module com.cn5004ap.payroll {
     requires javafx.graphics;
     requires javafx.controls;
     requires javafx.fxml;
+    requires javafx.media;
+    requires javafx.web;
     requires org.kordamp.ikonli.core;
     requires org.kordamp.ikonli.javafx;
     requires org.kordamp.ikonli.fontawesome5;
@@ -14,6 +16,7 @@ module com.cn5004ap.payroll {
     requires bcrypt;
     requires MaterialFX;
     requires org.json.simple;
+    requires eu.hansolo.tilesfx;
 
     opens com.cn5004ap.payroll.controller to javafx.fxml;
     opens com.cn5004ap.payroll.persistence to org.hibernate.orm.core;
