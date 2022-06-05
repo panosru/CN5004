@@ -16,6 +16,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import org.kordamp.ikonli.javafx.FontIcon?>
 <?import java.net.URL?>
+<?import com.cn5004ap.payroll.common.MaskField?>
 <AnchorPane xmlns:fx="http://javafx.com/fxml/1" fx:id="childRoot" prefHeight="800.0" prefWidth="800.0"
             xmlns="http://javafx.com/javafx/18"
             fx:controller="com.cn5004ap.payroll.controller.employees.DataController">
@@ -54,15 +55,15 @@
                     <children>
                         <MFXTextField fx:id="firstName" floatingText="First Name" layoutX="8.0" layoutY="21.0"
                                       prefHeight="51.0" prefWidth="350.0"/>
-                        <MFXTextField fx:id="lastName" floatingText="LastName" layoutX="382.0" layoutY="21.0"
+                        <MFXTextField fx:id="lastName" floatingText="Last Name" layoutX="382.0" layoutY="21.0"
                                       prefHeight="51.0" prefWidth="350.0"/>
                         <MFXTextField fx:id="email" floatingText="Email" layoutX="382.0" layoutY="93.0"
                                       prefHeight="51.0" prefWidth="350.0"/>
                         <MFXTextField fx:id="address" floatingText="Address" layoutX="8.0" layoutY="162.0"
                                       prefHeight="51.0" prefWidth="350.0"/>
-                        <MFXTextField fx:id="phone" floatingText="Phone" layoutX="8.0" layoutY="93.0" prefHeight="51.0"
+                        <MaskField fx:id="phone" mask="DDD-DDDD-DDD" placeholder="###-####-###" floatingText="Phone" layoutX="8.0" layoutY="93.0" prefHeight="51.0"
                                       prefWidth="350.0"/>
-                        <MFXTextField fx:id="ssn" floatingText="SSN" layoutX="466.0" layoutY="227.0" prefHeight="51.0"
+                        <MaskField fx:id="ssn" mask="DDD-DD-DDDD" placeholder="###-##-####" floatingText="SSN" layoutX="466.0" layoutY="227.0" prefHeight="51.0"
                                       prefWidth="266.0"/>
                         <Pane layoutX="8.0" layoutY="229.0" prefHeight="51.0" prefWidth="231.0" styleClass="fieldset">
                             <children>
@@ -75,18 +76,10 @@
                                 <Label layoutX="8.0" layoutY="-10.0" styleClass="fieldset-title" text="Gender"/>
                             </children>
                         </Pane>
-                        <Pane layoutX="254.0" layoutY="229.0" prefHeight="51.0" prefWidth="198.0" styleClass="fieldset">
-                            <children>
-                                <VBox alignment="CENTER">
-                                    <HBox alignment="CENTER">
-                                        <MFXDatePicker fx:id="birthDate" prefHeight="51.0" prefWidth="197.0"
-                                                       promptText="DD/MM/YYYY"/>
-                                    </HBox>
-                                </VBox>
-                                <Label layoutX="8.0" layoutY="-10.0" styleClass="fieldset-title" text="Birth Date"/>
-                            </children>
-                        </Pane>
-                        <MFXTextField fx:id="iban" floatingText="IBAN" layoutX="382.0" layoutY="162.0" prefHeight="51.0"
+                        <MFXDatePicker fx:id="birthDate" prefHeight="51.0" prefWidth="197.0" layoutX="254.0"
+                                       layoutY="229.0" promptText="DD/MM/YYYY" floatingText="Birth Date"
+                                       floatMode="BORDER"/>
+                        <MaskField mask="AAWW WWWW WWWW WWWW WWWW WWWW WWW" fx:id="iban" floatingText="IBAN" layoutX="382.0" layoutY="162.0" prefHeight="51.0"
                                       prefWidth="350.0"/>
                     </children>
                 </Pane>
@@ -97,10 +90,10 @@
             <content>
                 <Pane prefHeight="195.0" prefWidth="740.0">
                     <children>
-                        <MFXFilterComboBox fx:id="department" layoutX="7.0" layoutY="17.0" prefHeight="42.0"
-                                           prefWidth="448.0" promptText="Department"/>
-                        <MFXFilterComboBox fx:id="title" layoutX="7.0" layoutY="89.0" prefHeight="42.0"
-                                           prefWidth="448.0" promptText="Title"/>
+                        <MFXTextField fx:id="department" layoutX="7.0" layoutY="17.0" prefHeight="42.0"
+                                           prefWidth="448.0" floatingText="Department"/>
+                        <MFXTextField fx:id="title" layoutX="7.0" layoutY="89.0" prefHeight="42.0"
+                                           prefWidth="448.0" floatingText="Title"/>
                         <MFXTextField fx:id="salary" floatingText="Gross Salary" layoutX="468.0" layoutY="13.0"
                                       prefHeight="50.0" prefWidth="266.0"/>
                         <VBox alignment="CENTER_RIGHT" layoutX="468.0" layoutY="73.0" prefHeight="116.0"
