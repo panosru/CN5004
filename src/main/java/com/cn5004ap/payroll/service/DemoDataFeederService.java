@@ -3,8 +3,11 @@ package com.cn5004ap.payroll.service;
 import com.cn5004ap.payroll.App;
 import com.cn5004ap.payroll.common.ISingleton;
 import com.cn5004ap.payroll.common.Multiton;
+import com.cn5004ap.payroll.common.Utils;
 import com.cn5004ap.payroll.persistence.EmployeeEntity;
 import com.cn5004ap.payroll.persistence.EmployeeRepository;
+import com.cn5004ap.payroll.persistence.TransactionEntity;
+import com.cn5004ap.payroll.persistence.TransactionRepository;
 import com.cn5004ap.payroll.persistence.SettingsEntity;
 import com.cn5004ap.payroll.persistence.SettingsRepository;
 import com.cn5004ap.payroll.persistence.UserEntity;
@@ -17,12 +20,16 @@ import org.json.simple.parser.ParseException;
 import java.io.FileReader;
 import java.io.IOException;
 import java.text.SimpleDateFormat;
+import java.time.LocalDate;
 import java.util.Date;
+import java.util.Random;
 
 public class DemoDataFeederService
     implements ISingleton
 {
     private final EmployeeRepository employeeRepository;
+
+    private final TransactionRepository transactionRepository;
 
     private final UserRepository userRepository;
 
@@ -37,6 +44,7 @@ public class DemoDataFeederService
         // Prevent instantiation
         // Get repositories
         employeeRepository = Multiton.getInstance(EmployeeRepository.class);
+        transactionRepository = Multiton.getInstance(TransactionRepository.class);
         userRepository = Multiton.getInstance(UserRepository.class);
         settingsRepository = Multiton.getInstance(SettingsRepository.class);
     }
@@ -52,9 +60,9 @@ public class DemoDataFeederService
         {
             if (!executed)
             {
+                feedSettings();
                 feedUsers();
                 feedEmployees();
-                feedSettings();
             }
         }
         catch (Exception e)
@@ -120,7 +128,7 @@ public class DemoDataFeederService
                 e.printStackTrace();
             }
 
-            employeeRepository.save(new EmployeeEntity(
+            EmployeeEntity employee = new EmployeeEntity(
                 (String) jsonObject.get("first_name"),
                 (String) jsonObject.get("last_name"),
                 (String) jsonObject.get("email"),
@@ -136,7 +144,47 @@ public class DemoDataFeederService
                 (Boolean) jsonObject.get("active"),
                 employment_date,
                 termination_date
-            ));
+            );
+
+            // Monthly transactions (randomly generated for demo)
+            // Payment starts from next month of employment
+            LocalDate start = Utils.convertDateToLocal(employee.getEmploymentDate()).plusMonths(1);
+            LocalDate end   = Utils.convertDateToLocal(employee.isActive()?new Date():employee.getTerminationDate());
+            Random random = new Random();
+
+            while (!start.isAfter(end))
+            {
+                // Add salary
+                employee.addTransaction(new TransactionEntity(
+                    employee.getGrossSalary(),
+                    employee.getNetSalary(),
+                    employee.getInsuranceExpense(),
+                    employee.getTaxExpense(),
+                    TransactionEntity.TransactionType.SALARY,
+                    Utils.convertLocalDateToDate(start),
+                    employee));
+
+                // 10% probability to get a bonus (6 - 8% of salary)
+                if (random.nextInt(1, 101) <= 10)
+                    employee.addTransaction(new TransactionEntity(
+                        employee.getGrossSalary() * random.nextDouble(0.06, 0.081),
+                        TransactionEntity.TransactionType.BONUS,
+                        Utils.convertLocalDateToDate(start),
+                        employee));
+
+                // 5% probability to get a deduction (2 - 4% of salary)
+                if (random.nextInt(1, 101) <= 5)
+                    employee.addTransaction(new TransactionEntity(
+                        employee.getGrossSalary() * random.nextDouble(0.02, 0.041),
+                        TransactionEntity.TransactionType.DEDUCTION,
+                        Utils.convertLocalDateToDate(start),
+                        employee));
+
+                // Next month
+                start = start.plusMonths(1);
+            }
+
+            employeeRepository.save(employee);
         }
     }
 
