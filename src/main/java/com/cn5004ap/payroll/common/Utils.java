@@ -104,7 +104,7 @@ public final class Utils
      * @return String - a string of length 60 that is the bcrypt hashed string in crypt(3) format.
      */
     @Contract("_ -> new")
-    public static @NotNull String hashString(String s) {
+    public static @NotNull String hashString(@NotNull String s) {
         // Define the BCrypt workload to use when generating password hashes. 10-31 is a valid value.
         return BCrypt.withDefaults().hashToString(12, s.toCharArray());
     }

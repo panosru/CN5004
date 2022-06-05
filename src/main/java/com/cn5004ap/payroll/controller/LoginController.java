@@ -98,7 +98,6 @@ public class LoginController
     }
 
     public void userLogin()
-        throws IOException
     {
         loginBtn.textProperty().unbind();
 
