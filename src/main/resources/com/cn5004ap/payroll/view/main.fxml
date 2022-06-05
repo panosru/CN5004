@@ -27,8 +27,8 @@
                                 <FontIcon iconLiteral="fas-user-tie"/>
                             </graphic>
                         </Button>
-                        <Button maxWidth="1.7976931348623157E308" mnemonicParsing="false" fx:id="paymentsBtn"
-                                onAction="#loadPayments" text="Payments">
+                        <Button maxWidth="1.7976931348623157E308" mnemonicParsing="false" fx:id="transactionsBtn"
+                                onAction="#loadTransactions" text="Transactions">
                             <graphic>
                                 <FontIcon iconLiteral="fas-money-bill-wave"/>
                             </graphic>
