@@ -3,8 +3,8 @@ package com.cn5004ap.payroll.common;
 import io.github.palexdev.materialfx.controls.MFXTextField;
 import io.github.palexdev.materialfx.validation.Constraint;
 import io.github.palexdev.materialfx.validation.Severity;
+import javafx.beans.binding.Bindings;
 import javafx.beans.binding.BooleanExpression;
-import javafx.beans.property.SimpleStringProperty;
 import javafx.scene.control.Tooltip;
 import org.jetbrains.annotations.Contract;
 import org.jetbrains.annotations.NotNull;
@@ -93,7 +93,9 @@ public final class DataValidator
         {
             case EXACT -> addConstraint(constraintBuilder(
                 (field instanceof MaskField)
-                ? (new SimpleStringProperty(((MaskField) field).getPlainText())).length().isEqualTo(length)
+                ? Bindings.createBooleanBinding(
+                    () -> ((MaskField) field).getPlainText().length() == length,
+                    field.textProperty())
                 : field.textProperty().length().isEqualTo(length),
                 String.format(message, "exactly", length),
                 severity
@@ -101,7 +103,9 @@ public final class DataValidator
 
             case MIN -> addConstraint(constraintBuilder(
                 (field instanceof MaskField)
-                ? (new SimpleStringProperty(((MaskField) field).getPlainText())).length().greaterThanOrEqualTo(length)
+                ? Bindings.createBooleanBinding(
+                    () -> ((MaskField) field).getPlainText().length() >= length,
+                    field.textProperty())
                 : field.textProperty().length().greaterThanOrEqualTo(length),
                 String.format(message, "at least", length),
                 severity
@@ -109,7 +113,9 @@ public final class DataValidator
 
             case MAX -> addConstraint(constraintBuilder(
                 (field instanceof MaskField)
-                ? (new SimpleStringProperty(((MaskField) field).getPlainText())).length().lessThanOrEqualTo(length)
+                ? Bindings.createBooleanBinding(
+                    () -> ((MaskField) field).getPlainText().length() <= length,
+                    field.textProperty())
                 : field.textProperty().length().lessThanOrEqualTo(length),
                 String.format(message, "maximum", length),
                 severity
