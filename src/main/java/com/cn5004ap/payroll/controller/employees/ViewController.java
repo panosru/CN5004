@@ -1,9 +1,14 @@
 package com.cn5004ap.payroll.controller.employees;
 
 import com.cn5004ap.payroll.App;
+import com.cn5004ap.payroll.common.TransactionsTable;
 import com.cn5004ap.payroll.common.Utils;
 import com.cn5004ap.payroll.controller.BaseController;
 import com.cn5004ap.payroll.persistence.EmployeeEntity;
+import com.cn5004ap.payroll.persistence.TransactionEntity;
+import io.github.palexdev.materialfx.controls.MFXPaginatedTableView;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.scene.control.Hyperlink;
 import javafx.scene.control.Label;
@@ -22,6 +27,9 @@ import java.util.Date;
 public class ViewController
     extends BaseController
 {
+    @FXML
+    private MFXPaginatedTableView<TransactionEntity> table;
+
     @FXML
     private Label iban;
 
@@ -135,6 +143,17 @@ public class ViewController
         tax_expense.setText(Utils.moneyFormat(employee.getTaxExpense()));
         net_salary.setText(Utils.moneyFormat(employee.getNetSalary()));
         iban.setText(employee.getIban());
+
+        // Set table of transactions
+        table.setRowsPerPage(19);
+        (new TransactionsTable(table)).setup();
+        table.getSelectionModel().setAllowsMultipleSelection(false);
+
+        ObservableList<TransactionEntity> transactions = FXCollections.observableArrayList(
+            employee.getTransactions()
+        );
+
+        table.setItems(transactions);
     }
 
     public void sendEmail()

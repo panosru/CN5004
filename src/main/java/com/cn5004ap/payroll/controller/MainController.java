@@ -16,7 +16,7 @@ public class MainController
     private Button employeesBtn;
 
     @FXML
-    private Button paymentsBtn;
+    private Button transactionsBtn;
 
     @FXML
     private Button statisticsBtn;
@@ -45,10 +45,10 @@ public class MainController
         loadModule("employees/list");
     }
 
-    public void loadPayments()
+    public void loadTransactions()
     {
-        setActiveButton(paymentsBtn);
-        loadModule("payments/index");
+        setActiveButton(transactionsBtn);
+        loadModule("transactions/index");
     }
 
     public void loadStatistics()

@@ -12,7 +12,6 @@ import java.text.NumberFormat;
 import java.time.Instant;
 import java.time.LocalDate;
 import java.time.ZoneId;
-import java.util.Currency;
 import java.util.Date;
 import java.util.Locale;
 
